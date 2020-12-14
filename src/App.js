@@ -1,14 +1,16 @@
 import React, { Fragment } from 'react'
-import './scss/index.scss'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import { iconLib, Header } from './components'
+import { iconLibrary } from 'maverick-toolkit-react'
+import { icons } from './lib'
+import { Header, Footer } from './components'
 import { Home } from './pages'
-import 'maverick-toolkit-css'
+import './scss/index.scss'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
-  iconLib()
+  iconLibrary(icons)
   return (
-    <div>
+    <div className='bg-dark'>
       <Router>
         <Fragment>
           <Header />
@@ -19,6 +21,7 @@ function App() {
               <Route exact path='/login' component={Login} />
             </Switch>
           </section> */}
+          <Footer />
         </Fragment>
       </Router>
     </div>
