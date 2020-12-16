@@ -1,14 +1,13 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { Button, Icon } from 'maverick-toolkit-react'
-import cn from 'classnames'
 
 const Links = ({ children, links }) => {
   return (
     <Fragment>
       <ul className='d-flex flex-column'>
         {links.map(({ url, label, icon }) => (
-          <li className={cn({ 'u-text-center': !icon })} key={label}>
+          <li className='c-footer__link' key={label}>
             <Button href={url} color='link-light'>
               {icon && (
                 <Icon

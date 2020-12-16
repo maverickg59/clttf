@@ -7,9 +7,10 @@ import Navbar from 'react-bootstrap/Navbar'
 
 const Header = () => {
   const links = [
-    { label: 'About Us', href: '/about' },
     { label: 'Our Mission', href: '/what' },
-    { label: 'Support', href: '/support' },
+    { label: 'Support CLTTF', href: '/support' },
+    { label: 'About Us', href: '/about' },
+    { label: 'About Coach', href: '/coach' },
     { label: 'Apply', href: '/apply' },
   ]
   return (
@@ -36,13 +37,7 @@ const Header = () => {
           </Navbar.Collapse>
         </Navbar>
       </Col>
-      <Col
-        xs='12'
-        sm='12'
-        md='12'
-        lg='auto'
-        xl='auto'
-        className='d-flex justify-content-end'>
+      <Col xs='12' lg='auto' className='d-flex justify-content-end'>
         <Button
           buttonAsLink
           color='danger'

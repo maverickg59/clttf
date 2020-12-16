@@ -5,12 +5,11 @@ import Col from 'react-bootstrap/Col'
 
 const Footer = () => {
   const links = [
-    { url: '/contact', label: 'Contact Us' },
+    { url: '/mission', label: 'Mission Statement' },
+    { url: '/support', label: 'Support CLTTF' },
     { url: '/about', label: 'About Us' },
     { url: '/coach', label: 'About Coach' },
-    { url: '/donate', label: 'Donate' },
-    { url: '/mission', label: 'Our Mission' },
-    { url: '/apply', label: 'Apply' },
+    { url: '/contact', label: 'Contact Us' },
   ]
   const social = [
     { url: 'hi.com', label: 'Facebook', icon: ['fab', 'facebook-square'] },
@@ -21,8 +20,8 @@ const Footer = () => {
   const year = date.getFullYear()
   const dates = `${'\u00A9 '}2020 - ${year}`
   return (
-    <footer>
-      <Row className='justify-content-sm-around'>
+    <footer className='u-margin-top-giant'>
+      <Row className='justify-content-sm-center u-margin-bot-large'>
         <Col className='d-none d-sm-block' xs='auto'>
           <img
             className='c-footer-logo'
@@ -30,20 +29,20 @@ const Footer = () => {
             alt='Logo for Coach Lawson Training and Track Foundation, LLC'
           />
         </Col>
-        <Col xs={12} sm={3}>
+        <Col xs={12} sm={{ span: 'auto', offset: 1 }}>
+          <p className='c-footer__section-title'>Links</p>
           <Links links={links} />
         </Col>
-        <Col xs={12} sm={3}>
-          <Links
-            links={social}
-            children={
-              <MailingList
-                placeholder='Enter your email'
-                buttonText='Submit'
-                variant='success'
-              />
-            }
+        <Col xs={12} sm={{ span: 4, offset: 1 }}>
+          <MailingList
+            placeholder='Enter your email'
+            buttonText='Submit'
+            variant='success'
           />
+        </Col>
+        <Col xs={12} sm={{ span: 'auto', offset: 1 }}>
+          <p className='c-footer__section-title'>Social</p>
+          <Links links={social} />
         </Col>
       </Row>
       <Notice
