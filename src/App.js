@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { iconLibrary } from 'maverick-toolkit-react'
 import { icons } from './lib'
 import { Header, Footer } from './components'
