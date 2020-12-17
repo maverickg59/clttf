@@ -9,7 +9,6 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
   iconLibrary(icons)
-  console.log(Coach)
   return (
     <div className='bg-dark'>
       <Router>

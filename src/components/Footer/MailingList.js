@@ -8,15 +8,18 @@ const MailingList = ({ placeholder, buttonText, variant }) => {
   return (
     <Fragment>
       <p className='c-mailing-list__title'>Join our mailing list:</p>
-      <form netlify id='f-mailing-list'>
+      <form name='mailing-list' method='post'>
+        <input type='hidden' name='mailing-list' value='mailing-list' />
         <InputGroup className='mb-3'>
           <FormControl
             placeholder={placeholder}
             aria-label={placeholder}
-            form='f-mailing-list'
+            name='email'
           />
           <InputGroup.Append>
-            <Button variant={variant}>{buttonText}</Button>
+            <Button type='submit' variant={variant}>
+              {buttonText}
+            </Button>
           </InputGroup.Append>
         </InputGroup>
       </form>
