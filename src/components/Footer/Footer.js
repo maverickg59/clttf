@@ -1,24 +1,11 @@
 import React from 'react'
 import { Links, Notice, MailingList } from './'
+import { Copyright } from 'maverick-toolkit-react'
+import { FOOTER_NAVIGATION_LINKS, SOCIAL_LINKS } from '../../lib'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
 const Footer = () => {
-  const links = [
-    { url: '/mission', label: 'Mission Statement' },
-    { url: '/support', label: 'Support CLTTF' },
-    { url: '/about', label: 'About Us' },
-    { url: '/coach', label: 'About Coach' },
-    { url: '/contact', label: 'Contact Us' },
-  ]
-  const social = [
-    { url: 'hi.com', label: 'Facebook', icon: ['fab', 'facebook-square'] },
-    { url: 'hi.com', label: 'Instagram', icon: ['fab', 'instagram-square'] },
-    { url: 'hi.com', label: 'Twitter', icon: ['fab', 'twitter-square'] },
-  ]
-  const date = new Date()
-  const year = date.getFullYear()
-  const dates = `${'\u00A9 '}2020 - ${year}`
   return (
     <footer className='u-margin-top-giant'>
       <Row className='justify-content-sm-center u-margin-bot-large'>
@@ -31,7 +18,7 @@ const Footer = () => {
         </Col>
         <Col xs={12} sm={{ span: 'auto', offset: 1 }}>
           <p className='c-footer__section-title'>Links</p>
-          <Links links={links} />
+          <Links links={FOOTER_NAVIGATION_LINKS} />
         </Col>
         <Col xs={12} sm={{ span: 4, offset: 1 }}>
           <MailingList
@@ -42,14 +29,22 @@ const Footer = () => {
         </Col>
         <Col xs={12} sm={{ span: 'auto', offset: 1 }}>
           <p className='c-footer__section-title'>Social</p>
-          <Links links={social} />
+          <Links links={SOCIAL_LINKS} />
         </Col>
       </Row>
       <Notice
-        msg={`Coach Lawson Training and Track Foundation is a registered 501(c)(3)
+        msg={`Coach Lawson Training and Track Foundation is pending registration as a 501(c)(3)
           not for profit organization.`}
       />
-      <Notice msg={`${dates} CLTTF. All rights reserved.`} />
+      <Notice
+        children={
+          <Copyright
+            className='c-footer__notice'
+            entity='CLTTF'
+            established={2020}
+          />
+        }
+      />
     </footer>
   )
 }

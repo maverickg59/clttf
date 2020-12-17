@@ -7,13 +7,19 @@ import Button from 'react-bootstrap/Button'
 const MailingList = ({ placeholder, buttonText, variant }) => {
   return (
     <Fragment>
-      <p>Join our mailing list:</p>
-      <InputGroup className='mb-3'>
-        <FormControl placeholder={placeholder} aria-label={placeholder} />
-        <InputGroup.Append>
-          <Button variant={variant}>{buttonText}</Button>
-        </InputGroup.Append>
-      </InputGroup>
+      <p className='c-mailing-list__title'>Join our mailing list:</p>
+      <form netlify id='f-mailing-list'>
+        <InputGroup className='mb-3'>
+          <FormControl
+            placeholder={placeholder}
+            aria-label={placeholder}
+            form='f-mailing-list'
+          />
+          <InputGroup.Append>
+            <Button variant={variant}>{buttonText}</Button>
+          </InputGroup.Append>
+        </InputGroup>
+      </form>
     </Fragment>
   )
 }

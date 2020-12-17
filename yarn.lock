@@ -7149,10 +7149,10 @@ maverick-toolkit-css@^0.1.1:
   resolved "https://registry.yarnpkg.com/maverick-toolkit-css/-/maverick-toolkit-css-0.1.1.tgz#6a11205259e29559b126a720622be6c9473f366a"
   integrity sha512-5ZyiyHJWO02ZjHx2wyBbF4xr2g9X2lsJaKUoAHRGokjyDsuHShwOMz0WPQKPVeCYraL/dpghYI0EZHpzx7qILg==
 
-maverick-toolkit-react@^0.1.5:
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/maverick-toolkit-react/-/maverick-toolkit-react-0.1.5.tgz#40ca377376afb921042bc7796a994e95fb0f8a3a"
-  integrity sha512-SeMeskXJOlvxSGnYgF+r1Bz9t32g+DH/OyYz7vvsDKbzCuSPh7JxrYu8hFdVRVOXHOpFcGZNBpeS9msRTezGuw==
+maverick-toolkit-react@^0.1.8:
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/maverick-toolkit-react/-/maverick-toolkit-react-0.1.8.tgz#01817020e4b5c5e74b8af05e97bbac00087ad011"
+  integrity sha512-9vGh2PnVvKtI4dj6sJF4mPuKoCfsZx/UHD3Y6TWyOzy0CW3zGEWuUzBzEhEiaZIUG5guxrNb3nMVdB3AVfu8kw==
   dependencies:
     "@fortawesome/fontawesome-svg-core" "^1.2.32"
     "@fortawesome/free-solid-svg-icons" "^5.15.1"

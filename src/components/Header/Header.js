@@ -1,18 +1,12 @@
 import React from 'react'
 import { Button, Icon } from 'maverick-toolkit-react'
+import { HEADER_NAVIGATION_LINKS } from '../../lib'
 import Nav from 'react-bootstrap/Nav'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Navbar from 'react-bootstrap/Navbar'
 
 const Header = () => {
-  const links = [
-    { label: 'Our Mission', href: '/what' },
-    { label: 'Support CLTTF', href: '/support' },
-    { label: 'About Us', href: '/about' },
-    { label: 'About Coach', href: '/coach' },
-    { label: 'Apply', href: '/apply' },
-  ]
   return (
     <Row noGutters className='sticky-top'>
       <Col>
@@ -28,8 +22,8 @@ const Header = () => {
           <Navbar.Toggle aria-controls='responsive-navbar-nav' />
           <Navbar.Collapse id='responsive-navbar-nav'>
             <Nav className='mr-auto'>
-              {links.map(({ href, label }) => (
-                <Nav.Link key={label} eventKey={label} href={href}>
+              {HEADER_NAVIGATION_LINKS.map(({ url, label }) => (
+                <Nav.Link key={label} eventKey={label} href={url}>
                   {label}
                 </Nav.Link>
               ))}
