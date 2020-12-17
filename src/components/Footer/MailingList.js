@@ -9,7 +9,6 @@ const MailingList = ({ placeholder, buttonText, variant }) => {
   const [email, setEmail] = useState('')
   const [invalid, setInvalid] = useState(true)
   const [msg, setMsg] = useState()
-  const path = window.location.pathname
 
   const encode = data => {
     return Object.keys(data)
@@ -40,10 +39,16 @@ const MailingList = ({ placeholder, buttonText, variant }) => {
       : setInvalid(true)
   }
 
+  const onKeyPress = e => {
+    if (e.charCode === 13) {
+      onSubmit(e)
+    }
+  }
+
   return (
     <Fragment>
       <p className='c-mailing-list__title'>Join our mailing list:</p>
-      <form name='mailing-list' action={path}>
+      <form name='mailing-list'>
         <input type='hidden' name='mailing-list' value='mailing-list' />
         <InputGroup className='mb-3'>
           <FormControl
@@ -51,6 +56,7 @@ const MailingList = ({ placeholder, buttonText, variant }) => {
             value={email}
             placeholder={placeholder}
             aria-label={placeholder}
+            onKeyPress={onKeyPress}
             name='email'
           />
           <InputGroup.Append>

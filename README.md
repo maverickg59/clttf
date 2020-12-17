@@ -5,5 +5,12 @@ Mike Lawson was a motorcyclist for life, coach to many, and friend to all. His l
 # TODO:
 
 - privacy notice
-- hook up mailing list form
-- onkeypress utility
+- update form to remove action and test to see if netlify form still works (if not, prevent default action on keypress)
+- add created by notice and link to chriswhite.rocks
+- instagram url
+- twitter url
+- mission statement page
+- support foundation page
+- about us page
+- about coach page
+- apply page
