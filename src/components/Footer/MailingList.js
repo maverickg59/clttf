@@ -10,6 +10,12 @@ const MailingList = ({ placeholder, buttonText, variant }) => {
   const [invalid, setInvalid] = useState(true)
   const [msg, setMsg] = useState()
 
+  const encode = data => {
+    return Object.keys(data)
+      .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+      .join('&')
+  }
+
   const onSubmit = e => {
     const setSuccessMessage = (message, success = false) => {
       setMsg(message)
@@ -18,7 +24,8 @@ const MailingList = ({ placeholder, buttonText, variant }) => {
     }
     fetch('/', {
       method: 'POST',
-      body: { email: email, 'form-name': 'mailing-list' },
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({ email: email, 'form-name': 'mailing-list' }),
     })
       .then(() => setSuccessMessage(`We received your submission!`, true))
       .catch(() => setSuccessMessage('Something went wrong, try again.'))
@@ -35,7 +42,7 @@ const MailingList = ({ placeholder, buttonText, variant }) => {
   return (
     <Fragment>
       <p className='c-mailing-list__title'>Join our mailing list:</p>
-      <form name='mailing-list' method='post'>
+      <form name='mailing-list' action='/thank-you/'>
         <input type='hidden' name='mailing-list' value='mailing-list' />
         <InputGroup className='mb-3'>
           <FormControl
@@ -52,7 +59,11 @@ const MailingList = ({ placeholder, buttonText, variant }) => {
           </InputGroup.Append>
         </InputGroup>
       </form>
-      {msg && <Badge variant='success'>{msg}</Badge>}
+      {msg && (
+        <div className='c-footer__mailing-list-badge'>
+          <Badge variant='success'>{msg}</Badge>
+        </div>
+      )}
     </Fragment>
   )
 }
