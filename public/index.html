@@ -27,7 +27,7 @@
     <title>CLTTF</title>
   </head>
   <body>
-    <form name="mailing-list" netlify netlify-honeypot="bot-field" enctype="multipart/form-data" action="/thank-you/" hidden>
+    <form id="mailing-list" name="mailing-list" netlify netlify-honeypot="bot-field" enctype="multipart/form-data" hidden>
       <input type="email" name="email" />
     </form>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -43,4 +43,9 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
+  <script type="text/javascript">
+    window.onload = function() {
+      document.getElementById('mailing-list').action = window.location.pathname
+    }
+  </script>
 </html>

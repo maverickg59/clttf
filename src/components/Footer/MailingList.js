@@ -9,6 +9,7 @@ const MailingList = ({ placeholder, buttonText, variant }) => {
   const [email, setEmail] = useState('')
   const [invalid, setInvalid] = useState(true)
   const [msg, setMsg] = useState()
+  const path = window.location.pathname
 
   const encode = data => {
     return Object.keys(data)
@@ -42,7 +43,7 @@ const MailingList = ({ placeholder, buttonText, variant }) => {
   return (
     <Fragment>
       <p className='c-mailing-list__title'>Join our mailing list:</p>
-      <form name='mailing-list' action='/thank-you/'>
+      <form name='mailing-list' action={path}>
         <input type='hidden' name='mailing-list' value='mailing-list' />
         <InputGroup className='mb-3'>
           <FormControl
