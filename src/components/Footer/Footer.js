@@ -7,8 +7,8 @@ import Col from 'react-bootstrap/Col'
 
 const Footer = () => {
   return (
-    <footer className='u-margin-top-giant'>
-      <Row className='justify-content-sm-center u-margin-bot-large'>
+    <footer className='c-footer bg-dark'>
+      <Row className='u-padding-top-large justify-content-center u-margin-bot-large'>
         <Col className='d-none d-sm-block' xs='auto'>
           <img
             className='c-footer-logo'
@@ -20,7 +20,7 @@ const Footer = () => {
           <p className='c-footer__section-title'>Links</p>
           <Links links={FOOTER_NAVIGATION_LINKS} />
         </Col>
-        <Col xs={12} sm={{ span: 4, offset: 1 }}>
+        <Col xs={10} sm={{ span: 4, offset: 1 }}>
           <MailingList
             placeholder='Enter your email'
             buttonText='Submit'

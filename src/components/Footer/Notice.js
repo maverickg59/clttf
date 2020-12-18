@@ -5,8 +5,8 @@ import Row from 'react-bootstrap/Row'
 
 function Notice({ msg, children }) {
   return (
-    <Row className='justify-content-md-center'>
-      <Col xs='auto'>
+    <Row className='justify-content-center'>
+      <Col className='u-text-center' xs={10}>
         {msg ? <p className='c-footer__notice'>{msg}</p> : children}
       </Col>
     </Row>
