@@ -4,7 +4,7 @@ Mike Lawson was a motorcyclist for life, coach to many, and friend to all. His l
 
 # TODO:
 
-- support foundation page
+- integrate react router in netlify
 - mission statement page
 - privacy notice
 - instagram url
