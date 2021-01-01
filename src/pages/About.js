@@ -23,7 +23,7 @@ function About() {
       </Row>
       <PageHeader text={sectionOne.title} />
       <Row className='u-margin-bot-medium justify-content-center'>
-        <Col key='bio' className='u-margin-bot-giant' xs={10} sm={6}>
+        <Col className='u-margin-bot-giant' xs={10} sm={6}>
           <Card>
             <Card.Body>
               <Card.Text>{sectionOne.text}</Card.Text>
@@ -33,7 +33,7 @@ function About() {
       </Row>
       <PageHeader text={sectionTwo.title} />
       <Row className='u-margin-bot-medium justify-content-center'>
-        <Col xs={10} sm={10}>
+        <Col xs={11} sm={10}>
           {sectionTwo.cards.map((row, i) => {
             return (
               <CardDeck key={row[i].title} className='justify-content-center'>

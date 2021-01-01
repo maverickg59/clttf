@@ -9,7 +9,7 @@ import Navbar from 'react-bootstrap/Navbar'
 const Header = () => {
   return (
     <Row noGutters className='sticky-top justify-content-between bg-dark'>
-      <Col xs={6} sm={9}>
+      <Col xs='auto'>
         <Navbar
           className='d-flex justify-content-start'
           collapseOnSelect
@@ -35,7 +35,7 @@ const Header = () => {
           </Navbar.Collapse>
         </Navbar>
       </Col>
-      <Col xs='auto' className='d-flex'>
+      <Col xs='auto' className='c-donate d-flex'>
         <Button
           buttonAsLink
           color='danger'
