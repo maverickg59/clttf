@@ -39,7 +39,7 @@ function About() {
               <CardDeck key={row[i].title} className='justify-content-center'>
                 {row.map(({ name, title, text }) => {
                   return (
-                    <Col key={title} xs={12} sm={5}>
+                    <Col key={name} xs={12} sm={5}>
                       <div className='u-margin-bot-giant'>
                         <Card>
                           <Card.Body>

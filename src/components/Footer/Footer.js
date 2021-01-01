@@ -8,28 +8,28 @@ import Col from 'react-bootstrap/Col'
 const Footer = () => {
   return (
     <footer className='c-footer bg-dark'>
-      <Row className='u-padding-top-large justify-content-center u-margin-bot-large'>
+      <Row className='u-padding-top-large justify-content-center justify-content-sm-around u-margin-bot-medium'>
+        <Col xs={9} sm={6}>
+          <MailingList
+            placeholder='Enter your email'
+            buttonText='Submit'
+            variant='success'
+          />
+          <Row className='d-flex justify-content-center justify-content-sm-start flex-row flex-sm-column'>
+            <Col xs='auto'>
+              <Links links={FOOTER_NAVIGATION_LINKS} />
+            </Col>
+            <Col xs='auto'>
+              <Links links={SOCIAL_LINKS} />
+            </Col>
+          </Row>
+        </Col>
         <Col className='d-none d-sm-block' xs='auto'>
           <img
             className='c-footer-logo'
             src='https://mgx-photos.s3-us-west-2.amazonaws.com/lawson-ttf/Lawson_Logo_Rev_OUTLINES.png'
             alt='Logo for Coach Lawson Training and Track Foundation, LLC'
           />
-        </Col>
-        <Col xs={12} sm={{ span: 'auto', offset: 1 }}>
-          <p className='c-footer__section-title'>Links</p>
-          <Links links={FOOTER_NAVIGATION_LINKS} />
-        </Col>
-        <Col xs={10} sm={{ span: 4, offset: 1 }}>
-          <MailingList
-            placeholder='Enter your email'
-            buttonText='Submit'
-            variant='success'
-          />
-        </Col>
-        <Col xs={12} sm={{ span: 'auto', offset: 1 }}>
-          <p className='c-footer__section-title'>Social</p>
-          <Links links={SOCIAL_LINKS} />
         </Col>
       </Row>
       <Notice

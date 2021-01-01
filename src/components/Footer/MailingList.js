@@ -4,6 +4,7 @@ import InputGroup from 'react-bootstrap/InputGroup'
 import FormControl from 'react-bootstrap/FormControl'
 import Button from 'react-bootstrap/Button'
 import Badge from 'react-bootstrap/Badge'
+import cn from 'classnames'
 
 const MailingList = ({ placeholder, buttonText, variant }) => {
   const [email, setEmail] = useState('')
@@ -44,7 +45,12 @@ const MailingList = ({ placeholder, buttonText, variant }) => {
   return (
     <Fragment>
       <p className='c-mailing-list__title'>Join our mailing list:</p>
-      <form name='mailing-list'>
+      <form
+        className={cn({
+          'u-margin-bot-large': !msg,
+          'u-margin-bot-small': msg,
+        })}
+        name='mailing-list'>
         <input type='hidden' name='mailing-list' value='mailing-list' />
         <InputGroup className='mb-3'>
           <FormControl
@@ -64,7 +70,7 @@ const MailingList = ({ placeholder, buttonText, variant }) => {
         </InputGroup>
       </form>
       {msg && (
-        <div className='c-footer__mailing-list-badge'>
+        <div className='u-margin-bot-small c-footer__mailing-list-badge'>
           <Badge variant='success'>{msg}</Badge>
         </div>
       )}
@@ -73,6 +79,7 @@ const MailingList = ({ placeholder, buttonText, variant }) => {
 }
 
 MailingList.propTypes = {
+  className: PropTypes.string,
   placeholder: PropTypes.string.isRequired,
   buttonText: PropTypes.string.isRequired,
   variant: PropTypes.string.isRequired,
