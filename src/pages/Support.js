@@ -1,5 +1,6 @@
-import React from 'react'
-import { Icon, Button } from 'maverick-toolkit-react'
+import React, { Fragment } from 'react'
+import { Button } from 'maverick-toolkit-react'
+import { PageHeader } from '../components'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import CardDeck from 'react-bootstrap/CardDeck'
@@ -8,33 +9,24 @@ import { SUPPORT_CARDS } from '../lib'
 
 const Support = () => {
   return (
-    <div className='support-body'>
-      <Row className='u-margin-bot-giant justify-content-center'>
-        <Col xs='auto'>
-          <Icon icon='hand-holding-heart' size='6x' color='#343a40' />
-        </Col>
-      </Row>
-      <Row className='u-margin-bot-giant justify-content-center'>
-        <Col xs='auto'>
-          <h1 className='u-h2'>Discover how you can help.</h1>
-        </Col>
-      </Row>
-      <Row className='u-margin-bot-medium justify-content-sm-center'>
+    <Fragment>
+      <PageHeader text='Discover how you can help.' icon='hand-holding-heart' />
+      <Row className='u-margin-bot-medium justify-content-center'>
         <Col xs={12} sm={10}>
           {SUPPORT_CARDS.map((row, i) => {
             return (
-              <CardDeck
-                key={row[i].title}
-                className='u-margin-bot-giant justify-content-center'>
+              <CardDeck key={row[i].title} className='justify-content-center'>
                 {row.map(({ title, text }) => {
                   return (
                     <Col key={title} xs={12} sm={5}>
-                      <Card>
-                        <Card.Body>
-                          <Card.Title>{title}</Card.Title>
-                          <Card.Text>{text}</Card.Text>
-                        </Card.Body>
-                      </Card>
+                      <div className='u-margin-bot-giant'>
+                        <Card>
+                          <Card.Body>
+                            <Card.Title>{title}</Card.Title>
+                            <Card.Text>{text}</Card.Text>
+                          </Card.Body>
+                        </Card>
+                      </div>
                     </Col>
                   )
                 })}
@@ -44,7 +36,7 @@ const Support = () => {
         </Col>
       </Row>
       <Row className='u-margin-bot-large u-text-center justify-content-center'>
-        <Col xs='auto'>
+        <Col xs={11}>
           <p>
             Help out by contacting us at{' '}
             <a href='mailto:coachlawsonttf@gmail.com'>
@@ -54,8 +46,8 @@ const Support = () => {
           </p>
         </Col>
       </Row>
-      <Row className='u-margin-bot-giant u-text-center justify-content-center'>
-        <Col xs='12' lg='auto'>
+      <Row className='u-margin-bot-large u-text-center justify-content-center'>
+        <Col className='u-margin-bot-giant' xs='12' lg='auto'>
           <Button
             buttonAsLink
             color='danger'
@@ -64,7 +56,7 @@ const Support = () => {
           </Button>
         </Col>
       </Row>
-    </div>
+    </Fragment>
   )
 }
 

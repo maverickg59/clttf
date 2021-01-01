@@ -7,7 +7,6 @@ import Badge from 'react-bootstrap/Badge'
 
 const MailingList = ({ placeholder, buttonText, variant }) => {
   const [email, setEmail] = useState('')
-  const [invalid, setInvalid] = useState(true)
   const [msg, setMsg] = useState()
 
   const encode = data => {
@@ -34,9 +33,6 @@ const MailingList = ({ placeholder, buttonText, variant }) => {
 
   const onChange = e => {
     setEmail(e.target.value)
-    e.target.value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)
-      ? setInvalid(false)
-      : setInvalid(true)
   }
 
   const onKeyPress = e => {
@@ -52,6 +48,7 @@ const MailingList = ({ placeholder, buttonText, variant }) => {
         <input type='hidden' name='mailing-list' value='mailing-list' />
         <InputGroup className='mb-3'>
           <FormControl
+            type='email'
             onChange={onChange}
             value={email}
             placeholder={placeholder}
@@ -60,7 +57,7 @@ const MailingList = ({ placeholder, buttonText, variant }) => {
             name='email'
           />
           <InputGroup.Append>
-            <Button disabled={invalid} onClick={onSubmit} variant={variant}>
+            <Button onClick={onSubmit} variant={variant}>
               {buttonText}
             </Button>
           </InputGroup.Append>

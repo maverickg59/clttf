@@ -4,12 +4,31 @@ Mike Lawson was a motorcyclist for life, coach to many, and friend to all. His l
 
 # TODO:
 
-- integrate react router in netlify
-- mission statement page
-- privacy notice
-- instagram url
-- twitter url
-- about us page
-- about coach page
-- apply page
+- GDPR/CCPA
+
+  - Privacy Notice
+  - Terms of Use
+
+- Header
+
+  - mobile view donate button css fix
+
+- Footer
+
+  - mobile optimization
+
+- Forms
+
+  - update forms to VGS
+  - remove forms from index.html
+
+- Social Media
+
+  - instagram url
+  - twitter url
+
+- Pages
+
+  - About Us
+
 - add created by notice and link to chriswhite.rocks
