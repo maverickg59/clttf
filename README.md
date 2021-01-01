@@ -30,5 +30,10 @@ Mike Lawson was a motorcyclist for life, coach to many, and friend to all. His l
 - Pages
 
   - About Us
+    - Roland: bio & title
+    - Mary: title
+    - Christian: title
+    - Section One Text
+  - Home
 
 - add created by notice and link to chriswhite.rocks

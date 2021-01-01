@@ -14,8 +14,8 @@ const PageHeader = ({ icon = '', text, size = '5x', color = '#343a40' }) => {
           </Col>
         </Row>
       )}
-      <Row className='u-margin-bot-giant justify-content-center'>
-        <Col xs='auto'>
+      <Row className='u-margin-bot-giant justify-content-center u-text-center'>
+        <Col xs={11}>
           <h1 className='u-h2'>{text}</h1>
         </Col>
       </Row>
