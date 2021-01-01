@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <header className='sticky-top'>
       <Navbar
-        className='d-flex justify-content-start'
+        className='d-flex w-100 justify-content-start'
         collapseOnSelect
         expand='lg'
         bg='dark'

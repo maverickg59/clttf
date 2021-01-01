@@ -7,7 +7,7 @@ import Col from 'react-bootstrap/Col'
 
 const Footer = () => {
   return (
-    <footer className='c-footer bg-dark'>
+    <footer className='w-100 c-footer bg-dark'>
       <Row className='u-padding-top-large justify-content-center justify-content-sm-around u-margin-bot-medium'>
         <Col xs={10} sm={6}>
           <MailingList
