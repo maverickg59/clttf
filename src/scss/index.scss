@@ -2,6 +2,12 @@
 @import './theme/index';
 @import './components/index';
 @import './pages/index';
+#clttf {
+  .row {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
