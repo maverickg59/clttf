@@ -22,14 +22,8 @@ Mike Lawson was a motorcyclist for life, coach to many, and friend to all. His l
 - Pages
 
   - About Us
-    - Roland: bio & title
-    - Mary: title
-    - Christian: title
+    - Roland: bio
     - Section One Text
   - Home
-  - Apply
-    - correct css in form
-  - Footer
-    - correct css left margin links
 
 - add created by notice and link to chriswhite.rocks

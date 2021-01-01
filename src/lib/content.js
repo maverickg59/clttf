@@ -46,7 +46,7 @@ export const ABOUT_PAGE = {
         },
         {
           name: 'Mary Lawson',
-          title: '',
+          title: 'Director',
           text:
             'Mary Lawson is Coach Lawson’s mom.  She became a beloved member of the local motorcycle community after his passing. She now comes to the track regularly to cheer everyone on and tailgates to feed them!  Mary is an active member of the CLTTF board.  This grandmother of 2 hopes to become a motorcycle rider in the near future on Mikes MT09!',
         },
@@ -54,13 +54,13 @@ export const ABOUT_PAGE = {
       [
         {
           name: 'Christian Ramirez',
-          title: '',
+          title: 'Director',
           text:
             'Christian Ramirez served in the Marines from 2014 to 2018 and he lives with his fiance in El Mirage.  Christian has been riding motorcycles since March of 2019.  He has taken his MSF course and several training courses with a local trainer.  He has rapidly progressed, doing 9 track days, working the corners regularly at the track and his goal is to debut racing in 2021.  His example of extensive improvement through training and track days is the exact goal of CLTTF.',
         },
         {
           name: 'Roland Coy-Burt',
-          title: '',
+          title: 'Director',
           text: '?',
         },
       ],

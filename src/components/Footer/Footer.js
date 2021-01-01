@@ -9,17 +9,21 @@ const Footer = () => {
   return (
     <footer className='c-footer bg-dark'>
       <Row className='u-padding-top-large justify-content-center justify-content-sm-around u-margin-bot-medium'>
-        <Col xs={11} sm={6}>
-          <MailingList
-            placeholder='Enter your email'
-            buttonText='Submit'
-            variant='success'
-          />
+        <Col xs={12} sm={6}>
+          <Row className='justify-content-center'>
+            <Col xs={11}>
+              <MailingList
+                placeholder='Enter your email'
+                buttonText='Submit'
+                variant='success'
+              />
+            </Col>
+          </Row>
           <Row className='d-flex justify-content-center justify-content-sm-start flex-row flex-sm-column'>
-            <Col xs='auto'>
+            <Col xs={6}>
               <Links links={FOOTER_NAVIGATION_LINKS} />
             </Col>
-            <Col xs='auto'>
+            <Col xs={6}>
               <Links links={SOCIAL_LINKS} />
             </Col>
           </Row>

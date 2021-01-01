@@ -12,9 +12,7 @@ const Application = () => {
       case 'SET_FIRST':
       case 'SET_LAST':
       case 'SET_EMAIL':
-      case 'SET_AREA':
-      case 'SET_OFFICE':
-      case 'SET_SUBSCRIBER':
+      case 'SET_PHONE':
       case 'SET_YEARS':
       case 'SET_TEXT':
       case 'SET_MESSAGE':
@@ -29,9 +27,7 @@ const Application = () => {
     first: '',
     last: '',
     email: '',
-    area: '',
-    office: '',
-    subscriber: '',
+    phone: '',
     years: 0,
     equipment: false,
     training: false,
@@ -45,9 +41,7 @@ const Application = () => {
     first,
     last,
     email,
-    area,
-    office,
-    subscriber,
+    phone,
     years,
     equipment,
     training,
@@ -95,13 +89,7 @@ const Application = () => {
     <Form className='u-margin-bot-giant' name='apply'>
       <input type='hidden' name='apply' value='apply' />
       <Name dispatch={dispatch} first={first} last={last} />
-      <Contact
-        dispatch={dispatch}
-        email={email}
-        area={area}
-        office={office}
-        subscriber={subscriber}
-      />
+      <Contact dispatch={dispatch} email={email} area={phone} />
       <Needs
         dispatch={dispatch}
         years={years}

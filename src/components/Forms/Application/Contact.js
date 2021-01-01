@@ -4,7 +4,7 @@ import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 import PropTypes from 'prop-types'
 
-const Contact = ({ dispatch, email, area, office, subscriber }) => {
+const Contact = ({ dispatch, email, phone }) => {
   return (
     <Row className='justify-content-center'>
       <Col className='u-margin-bot-large' xs={10} sm={5}>
@@ -30,72 +30,26 @@ const Contact = ({ dispatch, email, area, office, subscriber }) => {
         </Form.Group>
       </Col>
       <Col className='u-margin-bot-large' xs={10} sm={5}>
-        <Form.Label htmlFor='phone'>Phone</Form.Label>
-        <Form.Group id='phone'>
-          <Row>
-            <Col xs={3}>
-              <Form.Control
-                type='tel'
-                maxLength='3'
-                className='mb-2'
-                id='area'
-                name='area'
-                aria-label='areaCode'
-                placeholder='555'
-                value={area}
-                onChange={e =>
-                  dispatch({
-                    type: 'SET_AREA',
-                    payload: e.target.value,
-                    field: e.target.name,
-                  })
-                }
-                required
-              />
-            </Col>
-            {` - `}
-            <Col xs={3}>
-              <Form.Control
-                type='tel'
-                maxLength='3'
-                className='mb-2'
-                id='office'
-                name='office'
-                aria-label='threeDigitCentralOfficeCodeNumber'
-                placeholder='555'
-                value={office}
-                onChange={e =>
-                  dispatch({
-                    type: 'SET_OFFICE',
-                    payload: e.target.value,
-                    field: e.target.name,
-                  })
-                }
-                required
-              />
-            </Col>
-            {` - `}
-            <Col xs={4}>
-              <Form.Control
-                type='tel'
-                maxLength='4'
-                className='mb-2'
-                id='subscriber'
-                name='subscriber'
-                aria-label='fourDigitSubscriberNumber'
-                placeholder='5555'
-                value={subscriber}
-                onChange={e =>
-                  dispatch({
-                    type: 'SET_SUBSCRIBER',
-                    payload: e.target.value,
-                    field: e.target.name,
-                  })
-                }
-                required
-              />
-            </Col>
-          </Row>
+        <Form.Label htmlFor='phoneNum'>Phone</Form.Label>
+        <Form.Group id='phoneNum'>
+          <Form.Control
+            type='tel'
+            maxLength='16'
+            className='mb-2'
+            id='phone'
+            name='phone'
+            aria-label='areaCode'
+            placeholder='(555) 555-5555'
+            value={phone}
+            onChange={e =>
+              dispatch({
+                type: 'SET_PHONE',
+                payload: e.target.value,
+                field: e.target.name,
+              })
+            }
+            required
+          />
         </Form.Group>
       </Col>
     </Row>
@@ -105,9 +59,7 @@ const Contact = ({ dispatch, email, area, office, subscriber }) => {
 Contact.propTypes = {
   dispatch: PropTypes.func.isRequired,
   email: PropTypes.string,
-  area: PropTypes.string,
-  office: PropTypes.string,
-  subscriber: PropTypes.string,
+  phone: PropTypes.string,
 }
 
 export default Contact

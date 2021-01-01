@@ -19,7 +19,7 @@ const Needs = ({ dispatch, years, equipment, training }) => {
 
   return (
     <Row className='justify-content-center'>
-      <Col xs={10}>
+      <Col xs={12} sm={10}>
         <Row>
           <Col xs={12} sm='auto'>
             <Form.Group id='needs'>
