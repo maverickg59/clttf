@@ -4,15 +4,17 @@ import { iconLibrary } from 'maverick-toolkit-react'
 import { icons } from './lib'
 import { Header, Footer, Banner } from './components'
 import { Home, Coach, Support, Mission, Apply, About } from './pages'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 import './scss/index.scss'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
   iconLibrary(icons)
   return (
-    <div>
-      <Router>
-        <Fragment>
+    <Row>
+      <Col xs={12}>
+        <Router>
           <Header />
           <Banner />
           <section>
@@ -26,9 +28,9 @@ function App() {
             </Switch>
           </section>
           <Footer />
-        </Fragment>
-      </Router>
-    </div>
+        </Router>
+      </Col>
+    </Row>
   )
 }
 
