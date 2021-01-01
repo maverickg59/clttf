@@ -6,7 +6,7 @@ import Navbar from 'react-bootstrap/Navbar'
 
 const Header = () => {
   return (
-    <header className='sticky-top'>
+    <header className='w-100 position-fixed'>
       <Navbar
         className='d-flex justify-content-start'
         collapseOnSelect
