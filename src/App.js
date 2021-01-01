@@ -12,25 +12,21 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 function App() {
   iconLibrary(icons)
   return (
-    <Row>
-      <Col xs={12}>
-        <Router>
-          <Header />
-          <Banner />
-          <section>
-            <Switch>
-              <Route exact path='/' component={Home} />
-              <Route exact path='/coach' component={Coach} />
-              <Route exact path='/support' component={Support} />
-              <Route exact path='/mission' component={Mission} />
-              <Route exact path='/apply' component={Apply} />
-              <Route exact path='/about' component={About} />
-            </Switch>
-          </section>
-          <Footer />
-        </Router>
-      </Col>
-    </Row>
+    <Router>
+      <Header />
+      <Banner />
+      <section>
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route exact path='/coach' component={Coach} />
+          <Route exact path='/support' component={Support} />
+          <Route exact path='/mission' component={Mission} />
+          <Route exact path='/apply' component={Apply} />
+          <Route exact path='/about' component={About} />
+        </Switch>
+      </section>
+      <Footer />
+    </Router>
   )
 }
 

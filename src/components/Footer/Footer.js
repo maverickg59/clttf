@@ -2,6 +2,7 @@ import React from 'react'
 import { Links, Notice, MailingList } from './'
 import { Copyright } from 'maverick-toolkit-react'
 import { FOOTER_NAVIGATION_LINKS, SOCIAL_LINKS } from '../../lib'
+import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
@@ -9,7 +10,7 @@ const Footer = () => {
   return (
     <footer className='c-footer bg-dark'>
       <Row className='u-padding-top-large justify-content-center justify-content-sm-around u-margin-bot-medium'>
-        <Col xs={9} sm={6}>
+        <Col xs={10} sm={6}>
           <MailingList
             placeholder='Enter your email'
             buttonText='Submit'
