@@ -2,7 +2,6 @@ import React from 'react'
 import { Links, Notice, MailingList } from './'
 import { Copyright } from 'maverick-toolkit-react'
 import { FOOTER_NAVIGATION_LINKS, SOCIAL_LINKS } from '../../lib'
-import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
