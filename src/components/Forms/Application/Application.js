@@ -28,7 +28,7 @@ const Application = () => {
     last: '',
     email: '',
     phone: '',
-    years: 0,
+    years: '0',
     equipment: false,
     training: false,
     text: '',

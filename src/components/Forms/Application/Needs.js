@@ -40,8 +40,7 @@ const Needs = ({ dispatch, years, equipment, training }) => {
                         payload: e.target.value,
                         field: e.target.name,
                       })
-                    }}
-                    required>
+                    }}>
                     {yrsRiding()}
                   </Form.Control>
                 </Col>
@@ -78,7 +77,6 @@ const Needs = ({ dispatch, years, equipment, training }) => {
                         field: e.target.name,
                       })
                     }
-                    required
                   />
                 </Col>
                 <Col xs='auto'>
@@ -96,7 +94,6 @@ const Needs = ({ dispatch, years, equipment, training }) => {
                         field: e.target.name,
                       })
                     }
-                    required
                   />
                 </Col>
               </Row>
@@ -110,7 +107,7 @@ const Needs = ({ dispatch, years, equipment, training }) => {
 
 Needs.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  years: PropTypes.number,
+  years: PropTypes.string,
   equipment: PropTypes.bool,
   training: PropTypes.bool,
 }

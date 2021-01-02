@@ -25,17 +25,7 @@ export const SUPPORT_CARDS = [
 ]
 
 export const ABOUT_PAGE = {
-  img: {
-    src:
-      'https://mgx-photos.s3-us-west-2.amazonaws.com/lawson-ttf/Lawson_Logo_BW_OUTLINES.png',
-    alt: 'CLTTF Logo',
-  },
-  sectionOne: {
-    title: 'Coach Lawson Training and Track Foundation',
-    text:
-      '“Coach” Mike Lawson ignited a passion for riding motorcycles at the age of four years old, riding a trizinger. His father passed in a motorcycle accident when he was just six years old. Mike rode on and off all his life, on dirt bikes, stunt bikes, street bikes and finally track. He influenced many in our riding community and was a mentor to many track enthusiasts. His last track day everyone commented he was the happiest he had ever been. Mike even came home and told his Mom it was THE BEST DAY EVER. Two days later at the age of 37 Mike died in an accident in his favorite canyon. His legacy of mentoring will live on in CLTTF.',
-  },
-  sectionTwo: {
+  section: {
     title: 'Board of Directors',
     cards: [
       [
@@ -61,9 +51,23 @@ export const ABOUT_PAGE = {
         {
           name: 'Roland Coy-Burt',
           title: 'Director',
-          text: '?',
+          text:
+            'Bacon ipsum dolor amet hamburger leberkas fatback chicken tenderloin bacon salami jowl strip steak andouille beef boudin frankfurter. Beef pork loin doner, pig rump pancetta brisket. Ham bacon pastrami cupim tri-tip shankle pork loin salami chicken ham hock beef ground round short loin. Jerky pork chop filet mignon venison kevin short loin. Shankle jowl shoulder short ribs ground round doner.',
         },
       ],
     ],
+  },
+}
+
+export const HOME_PAGE = {
+  img: {
+    src:
+      'https://mgx-photos.s3-us-west-2.amazonaws.com/lawson-ttf/Lawson_Logo_BW_OUTLINES.png',
+    alt: 'CLTTF Logo',
+  },
+  section: {
+    title: 'Coach Lawson Training and Track Foundation',
+    text:
+      '“Coach” Mike Lawson ignited a passion for riding motorcycles at the age of four years old, riding a trizinger. His father passed in a motorcycle accident when he was just six years old. Mike rode on and off all his life, on dirt bikes, stunt bikes, street bikes and finally track. He influenced many in our riding community and was a mentor to many track enthusiasts. His last track day everyone commented he was the happiest he had ever been. Mike even came home and told his Mom it was THE BEST DAY EVER. Two days later at the age of 37 Mike died in an accident in his favorite canyon. His legacy of mentoring will live on in CLTTF.',
   },
 }

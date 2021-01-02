@@ -5,6 +5,6 @@ export {
   SOCIAL_LINKS,
 } from './link-constants'
 
-export { SUPPORT_CARDS, ABOUT_PAGE } from './content'
+export { SUPPORT_CARDS, ABOUT_PAGE, HOME_PAGE } from './content'
 
 export { IMAGES } from './images'

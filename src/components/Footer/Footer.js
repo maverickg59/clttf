@@ -1,6 +1,6 @@
 import React from 'react'
 import { Links, Notice, MailingList } from './'
-import { Copyright } from 'maverick-toolkit-react'
+import { Copyright, Button } from 'maverick-toolkit-react'
 import { FOOTER_NAVIGATION_LINKS, SOCIAL_LINKS } from '../../lib'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -9,9 +9,9 @@ const Footer = () => {
   return (
     <footer className='c-footer bg-dark'>
       <Row className='u-padding-top-large justify-content-center justify-content-sm-around u-margin-bot-medium'>
-        <Col xs={12} sm={6}>
-          <Row className='justify-content-center'>
-            <Col xs={11}>
+        <Col xs={12} sm={7}>
+          <Row className='u-padding-bot-small justify-content-center justify-content-sm-start'>
+            <Col xs={10}>
               <MailingList
                 placeholder='Enter your email'
                 buttonText='Submit'
@@ -19,11 +19,11 @@ const Footer = () => {
               />
             </Col>
           </Row>
-          <Row className='d-flex justify-content-center justify-content-sm-start flex-row flex-sm-column'>
-            <Col xs={6}>
+          <Row className='d-flex justify-content-between justify-content-sm-start flex-row flex-sm-column'>
+            <Col xs='auto'>
               <Links links={FOOTER_NAVIGATION_LINKS} />
             </Col>
-            <Col xs={6}>
+            <Col xs='auto'>
               <Links links={SOCIAL_LINKS} />
             </Col>
           </Row>
@@ -41,12 +41,29 @@ const Footer = () => {
           not for profit organization.`}
       />
       <Notice
+        className='u-margin-bot-large'
         children={
           <Copyright
             className='c-footer__notice'
             entity='CLTTF'
             established={2020}
           />
+        }
+      />
+      <Notice
+        children={
+          <p className='c-footer__notice'>
+            The creation and maintenance of this site is provided free of charge
+            by
+            <span>
+              <Button
+                className='c-footer__notice c-footer__notice-link u-text-bold u-margin-left-tiny'
+                href='https://chriswhite.rocks'
+                color='link-light'>
+                chriswhite.rocks
+              </Button>
+            </span>
+          </p>
         }
       />
     </footer>

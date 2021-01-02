@@ -21,6 +21,14 @@ export const SOCIAL_LINKS = [
     label: 'Facebook',
     icon: ['fab', 'facebook-square'],
   },
-  { url: 'hi.com', label: 'Instagram', icon: ['fab', 'instagram-square'] },
-  { url: 'hi.com', label: 'Twitter', icon: ['fab', 'twitter-square'] },
+  {
+    url: 'https://www.instagram.com',
+    label: 'Instagram',
+    icon: ['fab', 'instagram-square'],
+  },
+  {
+    url: 'https://www.twitter.com',
+    label: 'Twitter',
+    icon: ['fab', 'twitter-square'],
+  },
 ]

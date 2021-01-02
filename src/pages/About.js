@@ -7,34 +7,13 @@ import Card from 'react-bootstrap/Card'
 import { ABOUT_PAGE } from '../lib'
 
 function About() {
-  const { img, sectionOne, sectionTwo } = ABOUT_PAGE
+  const { section } = ABOUT_PAGE
   return (
     <Fragment>
-      <Row className='justify-content-center'>
-        <Col xs={10} sm='auto'>
-          <Row className='justify-content-center'>
-            <img
-              className='c-about-logo u-margin-bot-giant'
-              src={img.src}
-              alt={img.alt}
-            />
-          </Row>
-        </Col>
-      </Row>
-      <PageHeader text={sectionOne.title} />
-      <Row className='u-margin-bot-medium justify-content-center'>
-        <Col className='u-margin-bot-giant' xs={10} sm={6}>
-          <Card>
-            <Card.Body>
-              <Card.Text>{sectionOne.text}</Card.Text>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-      <PageHeader text={sectionTwo.title} />
+      <PageHeader text={section.title} />
       <Row className='u-margin-bot-medium justify-content-center'>
         <Col xs={11} sm={10}>
-          {sectionTwo.cards.map((row, i) => {
+          {section.cards.map((row, i) => {
             return (
               <CardDeck key={row[i].title} className='justify-content-center'>
                 {row.map(({ name, title, text }) => {
