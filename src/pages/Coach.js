@@ -48,7 +48,7 @@ function Coach() {
   return (
     <Fragment>
       <Row className='justify-content-center'>
-        {isMobile(true) ? [portrait, bio] : [bio, portrait]}
+        {isMobile() ? [portrait, bio] : [bio, portrait]}
       </Row>
     </Fragment>
   )
