@@ -1,5 +1,4 @@
 @import 'maverick-toolkit-css';
-@import './theme/index';
 @import './components/index';
 @import './pages/index';
 #clttf {
@@ -33,4 +32,108 @@ ul {
 
 .u-text-bold {
   font-weight: 800;
+}
+
+// legacy toolkit css
+// global unit sizing
+$global-unit-size-tiny: 5px;
+$global-unit-size-small: 10px;
+$global-unit-size-medium: 20px;
+$global-unit-size-large: 30px;
+$global-unit-size-giant: 40px;
+// grid
+.u-flex-row {
+  display: flex;
+  flex-direction: row;
+}
+.u-flex-column {
+  display: flex;
+  flex-direction: column;
+}
+.u-justify-center {
+  justify-content: center;
+}
+.u-justify-start {
+  justify-content: start;
+}
+.u-justify-end {
+  justify-content: end;
+}
+.u-justify-between {
+  justify-content: space-between;
+}
+.u-justify-around {
+  justify-content: space-around;
+}
+.u-vertical-centered {
+  align-items: center;
+}
+.u-vertical-start {
+  align-items: flex-start;
+}
+.u-vertical-end {
+  align-items: flex-end;
+}
+.u-vertical-baseline {
+  align-items: baseline;
+}
+.u-vertical-stretch {
+  align-items: stretch;
+}
+// headings
+.u-h1 {
+  font-size: 32px;
+}
+.u-h2 {
+  font-size: 24px;
+}
+.u-h4 {
+  font-size: 16px;
+}
+// margins
+.u-margin-right-small {
+  margin-right: $global-unit-size-small;
+}
+.u-margin-left-tiny {
+  margin-left: $global-unit-size-tiny;
+}
+.u-margin-bot-tiny {
+  margin-bottom: $global-unit-size-tiny;
+}
+.u-margin-bot-small {
+  margin-bottom: $global-unit-size-small;
+}
+.u-margin-bot-medium {
+  margin-bottom: $global-unit-size-medium;
+}
+.u-margin-bot-large {
+  margin-bottom: $global-unit-size-large;
+}
+.u-margin-bot-giant {
+  margin-bottom: $global-unit-size-giant;
+}
+// padding
+.u-padding-top-large {
+  padding-top: $global-unit-size-large;
+}
+.u-padding-bot-small {
+  padding-bottom: $global-unit-size-small;
+}
+// text
+.u-text-center {
+  text-align: center;
+}
+// elements
+ul {
+  list-style-type: none;
+  padding: 0px 0px 0px 0px;
+}
+li {
+  padding: 0px 10px 0px 10px;
+}
+li:last-of-type {
+  padding: 0px 20px 0px 10px;
+}
+a {
+  text-decoration: none;
 }

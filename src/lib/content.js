@@ -52,7 +52,7 @@ export const ABOUT_PAGE = {
           name: 'Roland Coy-Burt',
           title: 'Director',
           text:
-            'Bacon ipsum dolor amet hamburger leberkas fatback chicken tenderloin bacon salami jowl strip steak andouille beef boudin frankfurter. Beef pork loin doner, pig rump pancetta brisket. Ham bacon pastrami cupim tri-tip shankle pork loin salami chicken ham hock beef ground round short loin. Jerky pork chop filet mignon venison kevin short loin. Shankle jowl shoulder short ribs ground round doner.',
+            'Roland Coy-Burt started riding at the age of 39 and soon thereafter totalled his bike on Yarnell Hill.  Roland proceeded to take EVERY training course he possibly could for the next 8 months.  He has vastly improved his riding and currently rides a Ducati V4 and a 959.  Roland hopes to do many track days in 2021!',
         },
       ],
     ],
