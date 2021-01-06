@@ -6,6 +6,9 @@
     margin-left: 0px;
     margin-right: 0px;
   }
+  .c-donate {
+    padding: 15px 30px 15px 30px;
+  }
 }
 body {
   margin: 0;
@@ -136,4 +139,9 @@ li:last-of-type {
 }
 a {
   text-decoration: none;
+}
+.c-footer {
+  ul {
+    list-style-type: none;
+  }
 }

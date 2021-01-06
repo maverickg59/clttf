@@ -4,6 +4,7 @@ export const FOOTER_NAVIGATION_LINKS = [
   { url: '/about', label: 'About Us' },
   { url: '/coach', label: 'About Coach' },
   { url: '/contact', label: 'Contact Us' },
+  { url: '/privacy', label: 'Privacy Policy' },
 ]
 
 export const HEADER_NAVIGATION_LINKS = [

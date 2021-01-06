@@ -4,11 +4,6 @@ Mike Lawson was a motorcyclist for life, coach to many, and friend to all. His l
 
 # TODO:
 
-- GDPR/CCPA
-
-  - Privacy Notice
-  - Terms of Use
-
 - Forms
 
   - update forms to VGS (very good security)
@@ -31,15 +26,6 @@ Mike Lawson was a motorcyclist for life, coach to many, and friend to all. His l
   - instagram url
   - twitter url
 
-- Pages
-
-  - About Us
-    - Roland: bio
-    - Section One Text
-  - Home
-
 - Content
 
   - asterisk nearby any tax-deductible
-
-- add created by notice and link to chriswhite.rocks
