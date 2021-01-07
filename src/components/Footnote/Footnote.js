@@ -20,7 +20,7 @@ const Footnote = () => {
           which the contribution is made, the contribution will be
           tax-deductible by the donor. Alternatively, if the organization
           ultimately does not qualify for exemption, then the contribution will
-          not be tax deductible.".
+          not be tax deductible."
         </span>
       </Col>
     </Row>
