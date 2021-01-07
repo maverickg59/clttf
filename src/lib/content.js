@@ -1,3 +1,4 @@
+import { Fragment } from 'react'
 export const SUPPORT_CARDS = [
   [
     {
@@ -7,14 +8,33 @@ export const SUPPORT_CARDS = [
     },
     {
       title: 'Gear:',
-      text: `Our students need gear so they can ride safely on and off track. Your old gear (or even new) can save someone's life in the event of a crash and it's even tax deductible.`,
+      text: (
+        <Fragment>
+          Our students need gear so they can ride safely on and off track. Your
+          old gear (or even new) can save someone's life in the event of a crash
+          and may be tax deductible
+          <sup>
+            <a href='#tax-deductible'>[1]</a>
+          </sup>
+          {'.'}
+        </Fragment>
+      ),
     },
   ],
   [
     {
       title: 'Large Items:',
-      text:
-        'Donations of high value items such as cars and motorcycles are tax deductible and can help fund numerous student scholarships. We can turn your items into gear and track day scholarships via sale or raffle.',
+      text: (
+        <Fragment>
+          Donations of high value items such as cars and motorcycles may also be
+          tax deductible
+          <sup>
+            <a href='#footnote'>[1]</a>
+          </sup>{' '}
+          and can help fund numerous student scholarships. We can turn your
+          items into gear and track day scholarships via sale or raffle.
+        </Fragment>
+      ),
     },
     {
       title: 'Track Days:',
@@ -53,6 +73,14 @@ export const ABOUT_PAGE = {
           title: 'Director',
           text:
             'Roland Coy-Burt started riding at the age of 39 and soon thereafter totalled his bike on Yarnell Hill.  Roland proceeded to take EVERY training course he possibly could for the next 8 months.  He has vastly improved his riding and currently rides a Ducati V4 and a 959.  Roland hopes to do many track days in 2021!',
+        },
+      ],
+      [
+        {
+          name: 'Chris Ardon',
+          title: 'Director | 04/07/1986 - 12/23/2020',
+          text:
+            'Chris Ardon joined the board shortly after Mike Lawsons death. Three months later Chris tragically passed. Chris had the most riding and track experience of any board member. He was a huge presence in the motorcycle family of Arizona. Chris’s two passions were his beautiful BMW S1000RR and photography. At the tracks or in the canyons he was constantly either riding, taking photos or working the corners. Chris Ardon will never be forgotten in our community and he will be honored with a posthumous position forever on the board of CLTTF.',
         },
       ],
     ],

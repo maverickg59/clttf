@@ -25,7 +25,3 @@ Mike Lawson was a motorcyclist for life, coach to many, and friend to all. His l
 
   - instagram url
   - twitter url
-
-- Content
-
-  - asterisk nearby any tax-deductible

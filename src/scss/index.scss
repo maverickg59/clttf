@@ -115,12 +115,18 @@ $global-unit-size-giant: 40px;
 .u-margin-bot-giant {
   margin-bottom: $global-unit-size-giant;
 }
+.u-margin-top-giant {
+  margin-top: $global-unit-size-giant;
+}
 // padding
 .u-padding-top-large {
   padding-top: $global-unit-size-large;
 }
 .u-padding-bot-small {
   padding-bottom: $global-unit-size-small;
+}
+.u-padding-left-small {
+  padding-left: $global-unit-size-small;
 }
 // text
 .u-text-center {
@@ -144,4 +150,8 @@ a {
   ul {
     list-style-type: none;
   }
+}
+// font sizing
+.u-font-size-footnote {
+  font-size: 10px;
 }

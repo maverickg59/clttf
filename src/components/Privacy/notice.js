@@ -54,7 +54,7 @@ export const PRIVACY_NOTICE = `<style>
 <div><br></div>
 <div><span style="color: rgb(127, 127, 127);"><strong><span style="font-size: 15px;"><span
                     data-custom-class="subtitle">Last updated <bdt class="question">December 19, 2020</bdt>
-                </span></span></strong></span></div>
+                    </span></span></strong></span></div>
 <div><br></div>
 <div><br></div>
 <div><br></div>
@@ -244,7 +244,7 @@ export const PRIVACY_NOTICE = `<style>
                         <bdt class="block-component"></bdt>
                     </span>, the choices you make and the products and features you use. The personal information we
                     collect may include the following:<bdt class="block-component"></bdt>
-                </span></span></span></span></div>
+                    </span></span></span></span></div>
 <div style="line-height: 1.5;"><br></div>
 <div style="line-height: 1.5;"><span style="font-size: 15px; color: rgb(89, 89, 89);"><span
             style="font-size: 15px; color: rgb(89, 89, 89);"><span data-custom-class="body_text"><strong>Personal
@@ -400,7 +400,7 @@ export const PRIVACY_NOTICE = `<style>
 <div style="line-height: 1.5;"><span style="font-size: 15px; color: rgb(89, 89, 89);"><span
             style="font-size: 15px; color: rgb(89, 89, 89);"><span data-custom-class="body_text">We use the
                 information we collect or receive:<bdt class="block-component"></bdt>
-            </span></span></span></span></span></span></span></span></span></span></span></span></bdt>
+                </span></span></span></span></span></span></span></span></span></span></span></span></bdt>
     </span></span></span></span></span></span></span></span></span></span></span></span></li>
     </ul>
     <div><span style="font-size: 15px; color: rgb(89, 89, 89);"><span
@@ -1600,7 +1600,7 @@ export const PRIVACY_NOTICE = `<style>
                                                                                             data-custom-class="body_text">
                                                                                             <bdt
                                                                                                 class="block-component">
-                                                                                            </bdt>NO<bdt
+                                                                                            </bdt>YES<bdt
                                                                                                 class="statement-end-if-in-editor">
                                                                                             </bdt>
                                                                                         </span></span></span></div>
@@ -1682,7 +1682,7 @@ export const PRIVACY_NOTICE = `<style>
                                                                                             <bdt
                                                                                                 class="block-component">
                                                                                             </bdt>NO<bdt
-                                                                                                class="statement-end-if-in-editor">
+                                                                                                class="else-block">
                                                                                             </bdt>
                                                                                         </span></span></span></div>
                                                                             <div style="line-height: 1.5;"><br>
@@ -3119,7 +3119,7 @@ export const PRIVACY_NOTICE = `<style>
                                                                                                 class="block-component">
                                                                                             </bdt>
                                                                                         </span></span></bdt>
-                                                                                </span></span></span></span>
+                                                                                    </span></span></span></span>
                                                                     </div>
                                                                     <div style="line-height: 1.5;"><span
                                                                             style="font-size: 15px;"><span
@@ -3246,7 +3246,7 @@ export const PRIVACY_NOTICE = `<style>
                                                                                     your personal information,
                                                                                     please <bdt
                                                                                         class="block-component">
-                                                                                </span></bdt><span
+                                                                                        </span></bdt><span
                                                                                     data-custom-class="body_text">visit:
                                                                                     <bdt class="question"><a
                                                                                             href="http://www.coachlawsonttf.com/delete-privacy-info"

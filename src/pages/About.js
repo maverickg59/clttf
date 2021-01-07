@@ -11,11 +11,13 @@ function About() {
   return (
     <Fragment>
       <PageHeader text={section.title} />
-      <Row className='u-margin-bot-medium justify-content-center'>
+      <Row className='u-margin-bot-giant justify-content-center'>
         <Col xs={11} sm={10}>
           {section.cards.map((row, i) => {
             return (
-              <CardDeck key={row[i].title} className='justify-content-center'>
+              <CardDeck
+                key={`${Math.random().toString(36).substring(7)}${i}`}
+                className='justify-content-center'>
                 {row.map(({ name, title, text }) => {
                   return (
                     <Col key={name} xs={12} sm={5}>
@@ -26,9 +28,7 @@ function About() {
                               <Card.Title className='mb-3'>{name}</Card.Title>
                             )}
                             {title && (
-                              <Card.Subtitle className='mb-2'>
-                                {title}
-                              </Card.Subtitle>
+                              <p className='u-h4 u-margin-bot-small'>{title}</p>
                             )}
                             {text && <Card.Text>{text}</Card.Text>}
                           </Card.Body>
