@@ -4,23 +4,6 @@ Mike Lawson was a motorcyclist for life, coach to many, and friend to all. His l
 
 # TODO:
 
-- Forms
-
-  - update forms to VGS (very good security)
-  - remove forms from index.html
-  <!-- <form id="mailing-list" name="mailing-list" netlify netlify-honeypot="bot-field" enctype="multipart/form-data" hidden>
-    <input type="email" name="email" />
-  </form>
-  <form id="application" name="application" netlify netlify-honeypot="bot-field" enctype="multipart/form-data" hidden>
-    <input type="text" name="first" />
-    <input type="text" name="last" />
-    <input type="email" name="email" />
-    <input type="text" name="area" />
-    <input type="text" name="office" />
-    <input type="text" name="subscriber" />
-    <select name="subscriber"></select>
-  </form> -->
-
 - Social Media
 
   - instagram url

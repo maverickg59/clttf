@@ -20,7 +20,7 @@ const Application = () => {
       case 'TOGGLE_TRAINING':
         return { ...state, [field]: payload }
       default:
-        return state
+        return Statement
     }
   }
   const initialState = {
