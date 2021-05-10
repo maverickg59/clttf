@@ -1,5 +1,6 @@
 import React, { useState, Fragment } from 'react'
 import PropTypes from 'prop-types'
+import axios from 'axios'
 import InputGroup from 'react-bootstrap/InputGroup'
 import FormControl from 'react-bootstrap/FormControl'
 import Button from 'react-bootstrap/Button'
@@ -8,28 +9,33 @@ import Button from 'react-bootstrap/Button'
 
 const MailingList = ({ placeholder, buttonText, variant }) => {
   const [email, setEmail] = useState('')
-  // const [msg, setMsg] = useState()
 
-  // const encode = data => {
-  //   return Object.keys(data)
-  //     .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-  //     .join('&')
-  // }
-
-  const onSubmit = e => {
-    // const setSuccessMessage = (message, success = false) => {
-    //   setMsg(message)
-    //   setTimeout(() => setMsg(), 5000)
-    //   if (success) setEmail('')
-    // }
-    // fetch('/', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    //   body: encode({ email: email, 'form-name': 'mailing-list' }),
-    // })
-    //   .then(() => setSuccessMessage(`We received your submission!`, true))
-    //   .catch(() => setSuccessMessage('Something went wrong, try again.'))
-    e.preventDefault()
+  async function submit() {
+    const url = 'https://git.heroku.com/clttf.git/api/users'
+    // const local = 'http://localhost:5000/api/users'
+    const data = {
+      name: 'wtfrig',
+      email: 'email@gmail.com',
+      password: '234567',
+    }
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+      },
+    }
+    try {
+      const response = await axios.post(url, data, config)
+      console.log(response)
+    } catch (error) {
+      if (error.request) {
+        console.log(error.request)
+      }
+      if (error.response) {
+        console.log(error.response)
+      }
+      console.log(error)
+    }
   }
 
   const onChange = e => {
@@ -38,7 +44,7 @@ const MailingList = ({ placeholder, buttonText, variant }) => {
 
   const onKeyPress = e => {
     if (e.charCode === 13) {
-      onSubmit(e)
+      submit(e)
     }
   }
 
@@ -63,7 +69,7 @@ const MailingList = ({ placeholder, buttonText, variant }) => {
             name='email'
           />
           <InputGroup.Append>
-            <Button onClick={onSubmit} variant={variant}>
+            <Button onClick={() => submit()} variant={variant}>
               {buttonText}
             </Button>
           </InputGroup.Append>
