@@ -1,4 +1,5 @@
-import React, { useReducer } from 'react'
+import React, { useReducer, useState } from 'react'
+import axios from 'axios'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
@@ -7,6 +8,7 @@ import Badge from 'react-bootstrap/Badge'
 import { Name, Contact, Needs, Statement } from './'
 
 const Application = () => {
+  const [msg, setMsg] = useState()
   function reducer(state, { type, payload, field }) {
     switch (type) {
       case 'SET_FIRST':
@@ -14,7 +16,6 @@ const Application = () => {
       case 'SET_EMAIL':
       case 'SET_PHONE':
       case 'SET_YEARS':
-      case 'SET_TEXT':
       case 'SET_MESSAGE':
       case 'TOGGLE_EQUIPMENT':
       case 'TOGGLE_TRAINING':
@@ -29,65 +30,44 @@ const Application = () => {
     email: '',
     phone: '',
     years: '0',
+    message: '',
     equipment: false,
     training: false,
-    text: '',
-    message: '',
   }
 
   const [state, dispatch] = useReducer(reducer, initialState)
 
-  const {
-    first,
-    last,
-    email,
-    phone,
-    years,
-    equipment,
-    training,
-    text,
-    message,
-  } = state
+  const { first, last, email, phone, years, message, equipment, training } =
+    state
 
-  //   const encode = data => {
-  //     return Object.keys(data)
-  //       .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-  //       .join('&')
-  //   }
+  const setNotification = str => {
+    setMsg(str)
+    setTimeout(() => setMsg(), 3000)
+  }
 
-  //   const onSubmit = e => {
-  //     const setSuccessMessage = message => {
-  //       dispatch({ type: 'SET_MESSAGE', payload: message, field: 'message' })
-  //       setTimeout(
-  //         () => dispatch({ type: 'SET_MESSAGE', payload: '', field: 'message' }),
-  //         5000
-  //       )
-  //     }
-  //     fetch('/', {
-  //       method: 'POST',
-  //       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-  //       body: encode({
-  //         first,
-  //         last,
-  //         email,
-  //         area,
-  //         office,
-  //         subscriber,
-  //         years,
-  //         equipment,
-  //         training,
-  //         text,
-  //         'form-name': 'application',
-  //       }),
-  //     })
-  //       .then(() => setSuccessMessage(`We received your submission!`, true))
-  //       .catch(() => setSuccessMessage('Something went wrong, try again.'))
-  //     e.preventDefault()
-  //   }
+  async function submitResponse() {
+    try {
+      const { status } = await axios.post('/api/application', state)
+      if (status === 200) {
+        setNotification('We received your submission!')
+      }
+    } catch ({ request, response }) {
+      if (request || response) {
+        setNotification('Something went wrong, please try again.')
+      }
+    }
+  }
+
+  const handleKeyPress = e => {
+    if (e.charCode === 13) {
+      e.preventDefault()
+      submitResponse()
+    }
+  }
+  const handleClick = () => submitResponse()
 
   return (
-    <Form className='u-margin-bot-giant' name='apply'>
-      <input type='hidden' name='apply' value='apply' />
+    <Form className='u-margin-bot-giant'>
       <Name dispatch={dispatch} first={first} last={last} />
       <Contact dispatch={dispatch} email={email} area={phone} />
       <Needs
@@ -96,19 +76,22 @@ const Application = () => {
         equipment={equipment}
         training={training}
       />
-      <Statement dispatch={dispatch} text={text} />
+      <Statement dispatch={dispatch} message={message} />
       <Row className='justify-content-center'>
         <Col xs={10}>
-          <Button variant='dark' type='submit'>
+          <Button
+            onKeyPress={handleKeyPress}
+            onClick={handleClick}
+            variant='dark'>
             Submit
           </Button>
+          {msg && (
+            <div className='c-footer__mailing-list-badge'>
+              <Badge variant='success'>{msg}</Badge>
+            </div>
+          )}
         </Col>
       </Row>
-      {message && (
-        <div className='c-footer__mailing-list-badge'>
-          <Badge variant='success'>{message}</Badge>
-        </div>
-      )}
     </Form>
   )
 }

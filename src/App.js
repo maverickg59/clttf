@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import axios from 'axios'
 import { iconLibrary } from 'maverick-toolkit-react'
 import { icons } from './lib'
 import { Header, Footer, Banner } from './components'
@@ -16,8 +17,13 @@ import {
 import './scss/index.scss'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
+axios.defaults.baseURL = 'https://clttf.herokuapp.com'
+axios.defaults.headers.post['Content-Type'] = 'application/json'
+axios.defaults.headers.post['X-Requested-With'] = 'XMLHttpRequest'
+
 function App() {
   iconLibrary(icons)
+
   return (
     <Router>
       <div className='c-app'>

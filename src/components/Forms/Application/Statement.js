@@ -4,24 +4,24 @@ import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 import PropTypes from 'prop-types'
 
-const Statement = ({ dispatch, text }) => {
+const Statement = ({ dispatch, message }) => {
   return (
     <Row className='u-margin-bot-tiny justify-content-center'>
       <Col xs={10}>
         <Form.Group>
-          <Form.Label htmlFor='text'>
+          <Form.Label htmlFor='message'>
             Briefly tell us why you need our help:
           </Form.Label>
           <Form.Control
             as='textarea'
             rows={3}
-            name='text'
-            id='text'
+            id='message'
+            name='message'
             aria-label='giveAShortStatementOfNeed'
-            value={text}
+            value={message}
             onChange={e =>
               dispatch({
-                type: 'SET_TEXT',
+                type: 'SET_MESSAGE',
                 payload: e.target.value,
                 field: e.target.name,
               })
@@ -36,7 +36,7 @@ const Statement = ({ dispatch, text }) => {
 
 Statement.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  text: PropTypes.string,
+  message: PropTypes.string,
 }
 
 export default Statement

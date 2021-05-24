@@ -4,82 +4,75 @@ import axios from 'axios'
 import InputGroup from 'react-bootstrap/InputGroup'
 import FormControl from 'react-bootstrap/FormControl'
 import Button from 'react-bootstrap/Button'
-// import Badge from 'react-bootstrap/Badge'
-// import cn from 'classnames'
+import Badge from 'react-bootstrap/Badge'
+import cn from 'classnames'
 
 const MailingList = ({ placeholder, buttonText, variant }) => {
   const [email, setEmail] = useState('')
+  const [msg, setMsg] = useState('')
 
-  async function submit() {
-    const url = 'https://git.heroku.com/clttf.git/api/users'
-    // const local = 'http://localhost:5000/api/users'
-    const data = {
-      name: 'wtfrig',
-      email: 'email@gmail.com',
-      password: '234567',
-    }
-    const config = {
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Requested-With': 'XMLHttpRequest',
-      },
-    }
+  const setNotification = str => {
+    setMsg(str)
+    setTimeout(() => setMsg(), 3000)
+  }
+
+  async function submitResponse() {
     try {
-      const response = await axios.post(url, data, config)
-      console.log(response)
-    } catch (error) {
-      if (error.request) {
-        console.log(error.request)
+      const { status } = await axios.post('/api/mailing', { email })
+      if (status === 200) {
+        setNotification('We received your submission!')
       }
-      if (error.response) {
-        console.log(error.response)
+    } catch ({ request, response }) {
+      if (request || response) {
+        setNotification('Something went wrong, please try again.')
       }
-      console.log(error)
     }
   }
 
-  const onChange = e => {
+  const handleChange = e => {
     setEmail(e.target.value)
   }
 
-  const onKeyPress = e => {
+  const handleKeyPress = e => {
     if (e.charCode === 13) {
-      submit(e)
+      e.preventDefault()
+      submitResponse(e)
     }
   }
+
+  const handleClick = e => submitResponse()
 
   return (
     <Fragment>
       <p className='c-mailing-list__title'>Join our mailing list:</p>
       <form
-        // className={cn({
-        //   'u-margin-bot-large': !msg,
-        //   'u-margin-bot-small': msg,
-        // })}
-        name='mailing-list'>
+        className={cn({
+          'u-margin-bot-large': !msg,
+          'u-margin-bot-small': msg,
+        })}>
         <input type='hidden' name='mailing-list' value='mailing-list' />
         <InputGroup className='mb-3'>
           <FormControl
             type='email'
-            onChange={onChange}
+            onChange={handleChange}
             value={email}
             placeholder={placeholder}
             aria-label={placeholder}
-            onKeyPress={onKeyPress}
+            onKeyPress={handleKeyPress}
             name='email'
           />
           <InputGroup.Append>
-            <Button onClick={() => submit()} variant={variant}>
+            <Button onClick={handleClick} variant={variant}>
               {buttonText}
             </Button>
           </InputGroup.Append>
         </InputGroup>
       </form>
-      {/* {msg && (
+      {msg && (
         <div className='u-margin-bot-small c-footer__mailing-list-badge'>
           <Badge variant='success'>{msg}</Badge>
         </div>
-      )} */}
+      )}
     </Fragment>
   )
 }
