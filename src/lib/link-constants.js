@@ -12,13 +12,20 @@ export const HEADER_NAVIGATION_LINKS = [
   { url: '/support', label: 'Support CLTTF' },
   { url: '/about', label: 'About Us' },
   { url: '/coach', label: 'About Coach' },
-  { url: '/apply', label: 'Apply' },
+]
+
+export const HEADER_BUTTON_LINKS = [
+  { url: '/apply', label: 'Apply', icon: 'clipboard-list' },
+  {
+    url: 'https://www.paypal.com/donate?hosted_button_id=VMLY57KNSCXQS',
+    label: 'Donate',
+    icon: 'heart',
+  },
 ]
 
 export const SOCIAL_LINKS = [
   {
-    url:
-      'https://www.facebook.com/Coach-Lawson-Training-and-Track-Foundation-102960111692089/',
+    url: 'https://www.facebook.com/Coach-Lawson-Training-and-Track-Foundation-102960111692089/',
     label: 'Facebook',
     icon: ['fab', 'facebook-square'],
   },

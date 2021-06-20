@@ -1,13 +1,15 @@
 .c-header {
   z-index: 9999;
 }
-.c-header__logo {
-  height: 80px;
+.c-header > .navbar {
+  padding: 0 0 0 0;
 }
-
-.c-donate {
-  position: fixed;
-  right: 0;
-  top: 0;
-  z-index: 9999;
+.c-header__navbar-togggle {
+  margin: 12px 0 10px 12px;
+}
+.c-header__navbar-navblock {
+  margin-left: 15px;
+}
+.c-header__navbar-navbrand {
+  margin-left: 15px;
 }
