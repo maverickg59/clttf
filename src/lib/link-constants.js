@@ -28,15 +28,18 @@ export const SOCIAL_LINKS = [
     url: 'https://www.facebook.com/Coach-Lawson-Training-and-Track-Foundation-102960111692089/',
     label: 'Facebook',
     icon: ['fab', 'facebook-square'],
+    altIcon: ['fab', 'facebook-square'],
   },
   {
     url: 'https://www.instagram.com',
     label: 'Instagram',
     icon: ['fab', 'instagram-square'],
+    altIcon: ['fab', 'instagram'],
   },
   {
     url: 'https://www.twitter.com',
     label: 'Twitter',
     icon: ['fab', 'twitter-square'],
+    altIcon: ['fab', 'twitter-square'],
   },
 ]

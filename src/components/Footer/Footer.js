@@ -1,5 +1,6 @@
 import React from 'react'
-import { Links, Notice, MailingList } from './'
+import { Notice, MailingList } from './'
+import { Links } from '../Links'
 import { Copyright, Button } from 'maverick-toolkit-react'
 import { FOOTER_NAVIGATION_LINKS, SOCIAL_LINKS } from '../../lib'
 import Row from 'react-bootstrap/Row'
@@ -21,10 +22,14 @@ const Footer = () => {
           </Row>
           <Row className='d-flex justify-content-between justify-content-sm-start flex-row flex-sm-column'>
             <Col xs='auto'>
-              <Links links={FOOTER_NAVIGATION_LINKS} />
+              <Links
+                links={FOOTER_NAVIGATION_LINKS}
+                color='#FFFFFF'
+                linkTheme='light'
+              />
             </Col>
             <Col xs='auto'>
-              <Links links={SOCIAL_LINKS} />
+              <Links links={SOCIAL_LINKS} color='#FFFFFF' linkTheme='light' />
             </Col>
           </Row>
         </Col>

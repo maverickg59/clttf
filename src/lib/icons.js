@@ -1,6 +1,7 @@
 import {
   faFacebookSquare,
   faInstagramSquare,
+  faInstagram,
   faTwitterSquare,
 } from '@fortawesome/free-brands-svg-icons'
 import {
@@ -16,6 +17,7 @@ export const icons = [
   faClipboardList,
   faFacebookSquare,
   faInstagramSquare,
+  faInstagram,
   faTwitterSquare,
   faHandHoldingHeart,
 ]

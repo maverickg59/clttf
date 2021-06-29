@@ -3,18 +3,25 @@ import PropTypes from 'prop-types'
 import { Button, Icon } from 'maverick-toolkit-react'
 import cn from 'classnames'
 
-const Links = ({ className, children, links }) => {
+const Links = ({
+  className,
+  color,
+  children,
+  links,
+  linkTheme,
+  useAltIcon,
+}) => {
   return (
     <Fragment>
-      <ul className={cn(className, 'd-flex flex-column flex-sm-row')}>
-        {links.map(({ url, label, icon }, i) => (
+      <ul className={cn(className, 'd-flex flex-column flex-sm-row w-100')}>
+        {links.map(({ url, label, icon, altIcon }, i) => (
           <Fragment key={label}>
-            <li className='c-footer__link'>
-              <Button href={url} color='link-light'>
+            <li className='c-link__list-item'>
+              <Button href={url} color={`link-${linkTheme}`}>
                 {icon && (
                   <Icon
-                    icon={icon}
-                    color='#FFFFFF'
+                    icon={useAltIcon ? altIcon : icon}
+                    color={color}
                     className='u-margin-right-small'
                   />
                 )}
@@ -34,8 +41,18 @@ const Links = ({ className, children, links }) => {
 
 Links.propTypes = {
   className: PropTypes.string,
-  links: PropTypes.array.isRequired,
+  color: PropTypes.string,
   children: PropTypes.node,
+  links: PropTypes.array.isRequired,
+  linktheme: PropTypes.string.isRequired,
+  useAltIcon: PropTypes.bool,
+}
+
+Links.defaultProps = {
+  className: '',
+  color: '',
+  children: <Fragment />,
+  useAltIcon: false,
 }
 
 export default Links

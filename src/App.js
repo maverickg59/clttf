@@ -11,6 +11,7 @@ import {
   Mission,
   Apply,
   About,
+  Contact,
   PrivacyPage,
   PrivacyDelete,
 } from './pages'
@@ -38,6 +39,7 @@ function App() {
               <Route exact path='/mission' component={Mission} />
               <Route exact path='/apply' component={Apply} />
               <Route exact path='/about' component={About} />
+              <Route exact path='/contact' component={Contact} />
               <Route exact path='/privacy' component={PrivacyPage} />
               <Route
                 exact
