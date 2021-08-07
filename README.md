@@ -8,3 +8,17 @@ Mike Lawson was a motorcyclist for life, coach to many, and friend to all. His l
 
   - instagram url
   - twitter url
+
+- Login UI
+
+- Forms
+
+  - Assistance Application
+    - clear form on submit
+    - loading indicator on submit
+  - Mailing List
+    - clear form on submit
+    - loading indicator on submit
+
+- Email alerts
+  - nodemailer
