@@ -42,7 +42,7 @@ const Footer = () => {
         </Col>
       </Row>
       <Notice
-        msg={`Coach Lawson Training and Track Foundation is pending registration as a 501(c)(3)
+        msg={`Coach Lawson Training and Track Foundation is a 501(c)(3)
           not for profit organization.`}
       />
       <Notice
