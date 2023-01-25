@@ -33,7 +33,11 @@ const Header = () => {
           </Nav>
           <Nav>
             {HEADER_BUTTON_LINKS.map(({ url, label, icon }) => (
-              <Button buttonAsLink color='danger' href={url}>
+              <Button
+                buttonAsLink
+                color='danger'
+                href={url}
+                className='button-fix'>
                 <Icon
                   className='u-margin-right-small'
                   icon={icon}

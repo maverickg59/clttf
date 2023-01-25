@@ -51,7 +51,8 @@ const Support = () => {
           <Button
             buttonAsLink
             color='danger'
-            href='https://www.paypal.com/donate?hosted_button_id=VMLY57KNSCXQS'>
+            href='https://www.paypal.com/donate?hosted_button_id=VMLY57KNSCXQS'
+            className='button-fix'>
             <span>Donate using PayPal</span>
           </Button>
         </Col>

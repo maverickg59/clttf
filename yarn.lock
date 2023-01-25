@@ -3307,9 +3307,9 @@ caniuse-api@^3.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001125, caniuse-lite@^1.0.30001400:
-  version "1.0.30001447"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001447.tgz#ef1f39ae38d839d7176713735a8e467a0a2523bd"
-  integrity sha512-bdKU1BQDPeEXe9A39xJnGtY0uRq/z5osrnXUw0TcK+EYno45Y+U7QU9HhHEyzvMDffpYadFXi3idnSNkcwLkTw==
+  version "1.0.30001448"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001448.tgz#ca7550b1587c92a392a2b377cd9c508b3b4395bf"
+  integrity sha512-tq2YI+MJnooG96XpbTRYkBxLxklZPOdLmNIOdIhvf7SNJan6u5vCKum8iT7ZfCt70m1GPkuC7P3TtX6UuhupuA==
 
 capture-exit@^2.0.0:
   version "2.0.0"
@@ -7503,10 +7503,10 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
-maverick-toolkit-css@^0.2.3, maverick-toolkit-css@^0.2.5:
-  version "0.2.5"
-  resolved "https://registry.yarnpkg.com/maverick-toolkit-css/-/maverick-toolkit-css-0.2.5.tgz#66a0cd9106f9a4e093ef8b0c4e91304f9fd21d30"
-  integrity sha512-CX/S2SQV+k9sdTK2f0Y+8gMfDzqOcBnhdB43xt5wMdt3JASS1wgs4/M1pYlHjN2AMVKouJMylc/z6v8YCmeSiA==
+maverick-toolkit-css@^0.2.5, maverick-toolkit-css@^0.2.6:
+  version "0.2.6"
+  resolved "https://registry.yarnpkg.com/maverick-toolkit-css/-/maverick-toolkit-css-0.2.6.tgz#27218c6bf5df1de224ab7393f822b9f1874ba139"
+  integrity sha512-cPITO84Y1xf5mAUnleIkLY/co7UDigGjUnlgVr0fAvsBhUWljnyKgWeLMZf1wd4QbIjSgVL8GZIHSzRWM+4qhA==
 
 maverick-toolkit-react@^0.1.11:
   version "0.1.14"
