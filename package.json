@@ -17,12 +17,12 @@
     "maverick-toolkit-css": "^0.2.3",
     "maverick-toolkit-react": "^0.1.11",
     "maverick-toolkit-utils": "^0.0.2",
-    "node-sass": "npm:sass@^1.29.0",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.0",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
+    "sass": "^1.57.1",
     "web-vitals": "^0.2.4",
     "yarn": "^1.22.10"
   },

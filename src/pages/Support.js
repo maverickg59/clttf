@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { Button } from 'maverick-toolkit-react'
-import { PageHeader, Footnote } from '../components'
+import { PageHeader } from '../components'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import CardDeck from 'react-bootstrap/CardDeck'
@@ -56,7 +56,6 @@ const Support = () => {
           </Button>
         </Col>
       </Row>
-      <Footnote />
     </Fragment>
   )
 }
