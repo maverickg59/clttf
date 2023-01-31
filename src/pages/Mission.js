@@ -20,10 +20,10 @@ const Mission = () => {
                 prevalence and severity of motorcycle accidents by assisting
                 riders gain access to high quality training and safety
                 equipment. We solicit donations of gear, track days, bike
-                rentals, training courses and funds to achieve our mission. Each
-                rider who applies for any scholarship will be evaluated by our
-                board of directors on a holistic basis. Scholarships will be
-                furnished to riders whom the board deems qualified candidates.
+                rentals, training courses and funds to achieve our mission.
+                CLTTF encourages ALL riders to contact us for assistance with
+                gear, training and track days, we don't discriminate in any way.
+                We are also very proud to serve the Veteran community!
               </Card.Text>
             </Card.Body>
           </Card>
