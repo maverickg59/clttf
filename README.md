@@ -1,24 +1,14 @@
-A small contribution to the Coach Lawson Training and Track Foundation
-
-Mike Lawson was a motorcyclist for life, coach to many, and friend to all. His life tragically ended in September of 2020. CLTTF was founded in honor of his many contributions to the sport of motorcycling and his beloved community. This site will function as the foundations primary web property to confer information and accept donations.
-
-# TODO:
-
-- Social Media
-
-  - instagram url
-  - twitter url
-
-- Login UI
-
-- Forms
-
-  - Assistance Application
-    - clear form on submit
-    - loading indicator on submit
-  - Mailing List
-    - clear form on submit
-    - loading indicator on submit
-
-- Email alerts
-  - nodemailer
+About Coach
+“Coach” Mike Lawson ignited a passion for riding motorcycles at
+the age of four years old, riding a trizinger. His father passed
+in a motorcycle accident when he was just six years old. Mike rode
+on and off all his life, on dirt bikes, stunt bikes, street bikes
+and finally track. He influenced many in our riding community and
+was a mentor to many track enthusiasts. His last track day
+everyone commented he was the happiest he had ever been. Mike even
+came home and told his Mom it was THE BEST DAY EVER. Two days
+later at the age of 37 Mike died in an accident in his favorite
+canyon. His legacy of mentoring will live on in CLTTF. We
+encourage ALL riders to contact us for assistance with gear,
+training and track days, we don&rsquo;t discriminate in any way.
+We are also very proud to serve the Veteran community!
