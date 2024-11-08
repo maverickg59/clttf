@@ -5,8 +5,8 @@ export function Layout({
   children,
   showFooter = true,
 }: {
-  children: React.ReactNode
-  showFooter?: boolean
+  readonly children: React.ReactNode
+  readonly showFooter?: boolean
 }) {
   return (
     <>
