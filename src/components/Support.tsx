@@ -2,7 +2,6 @@ import Image from 'next/image'
 
 import { BackgroundImage } from '@/components/BackgroundImage'
 import { Container } from '@/components/Container'
-import backgroundImage from '@/images/clttf_tf_3.jpg'
 
 const faqs = [
   {
@@ -38,10 +37,11 @@ export function Support() {
         <BackgroundImage className="-bottom-40 -top-40 scale-x-[-1] opacity-90">
           <Image
             className="top-0 h-full w-full object-cover"
-            src={backgroundImage}
+            src="/images/clttf_tf_3.jpg"
             alt="Coach Lawson riding his R3 at the Phoenix Kart Racing Association track."
             priority
             unoptimized
+            fill
           />
         </BackgroundImage>
         <Container className="relative">

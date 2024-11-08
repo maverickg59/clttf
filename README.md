@@ -1,14 +1,16 @@
-About Coach
-“Coach” Mike Lawson ignited a passion for riding motorcycles at
-the age of four years old, riding a trizinger. His father passed
-in a motorcycle accident when he was just six years old. Mike rode
-on and off all his life, on dirt bikes, stunt bikes, street bikes
-and finally track. He influenced many in our riding community and
-was a mentor to many track enthusiasts. His last track day
-everyone commented he was the happiest he had ever been. Mike even
-came home and told his Mom it was THE BEST DAY EVER. Two days
-later at the age of 37 Mike died in an accident in his favorite
-canyon. His legacy of mentoring will live on in CLTTF. We
-encourage ALL riders to contact us for assistance with gear,
-training and track days, we don&rsquo;t discriminate in any way.
-We are also very proud to serve the Veteran community!
+Coach Lawson Training and Track Foundation is a small 501(c)(3) not for profit organization in Arizona that is dedicated to rider safety. This is the repo for their webpage. I truly believe in the founder and director, Viki. She's shown a huge amount of support to the rider community in Phoenix.
+
+I've built and maintain this site (including all operating costs) totally free of charge. The previous build (in 2020) used CRA and React Bootstrap, but the deprecation of CRA caused me to upgrade. The site is now built using the following tech stack:
+
+Typescript
+Next.js
+React.js
+Tailwind CSS
+Superstruct
+Postgres
+SendGrid
+
+TODO:
+set up to deploy on Cloudflare
+add Facebook page - https://www.facebook.com/Coach-Lawson-Training-and-Track-Foundation-102960111692089/
+mobile optimization

@@ -1,7 +1,6 @@
 'use client'
 import { Container } from '@/components/Container'
 import Image from 'next/image'
-import lawson from '@/images/clttf_mike_lawson.jpg'
 
 export function Inspiration() {
   return (
@@ -31,7 +30,7 @@ export function Inspiration() {
                     Our Inspiration
                   </h2>
                   <p className="mb-1 mt-4 text-3xl text-gray-950">
-                    Mike "Coach" Lawson
+                    {'Mike "Coach" Lawson'}
                   </p>
                   <span className="my-4 text-sm">8/26/1983 - 9/22/2020</span>
                   <p className="mt-4 font-display text-xl tracking-tight text-gray-950">
@@ -56,9 +55,11 @@ export function Inspiration() {
           <div className="lg:absolute lg:inset-y-0 lg:right-0">
             <Image
               alt="Coach Mike Lawson hanging out during a motorcycle ride."
-              src={lawson}
+              src="/images/clttf_mike_lawson.jpg"
               className="aspect-[3/2] rounded-b-5xl object-cover sm:rounded-r-5xl sm:rounded-bl-none lg:aspect-auto"
               unoptimized
+              width={600}
+              height={200}
             />
           </div>
         </div>

@@ -2,7 +2,6 @@ import { BackgroundImage } from '@/components/BackgroundImage'
 import { Container } from '@/components/Container'
 import { Button } from '@/components/Button'
 import Image from 'next/image'
-import backgroundImage from '@/images/clttf_tf_1.jpg'
 
 export function Hero() {
   return (
@@ -10,10 +9,11 @@ export function Hero() {
       <BackgroundImage className="-bottom-14 -top-36">
         <Image
           className="top-0 h-full w-full object-cover"
-          src={backgroundImage}
+          src="/images/clttf_tf_1.jpg"
           alt="Coach Lawson riding his Yamaha R1 at Tortilla Flats."
           priority
           unoptimized
+          fill
         />
       </BackgroundImage>
       <Container className="relative">

@@ -12,13 +12,13 @@ const boardMembers = [
     name: 'Viki Ducati',
     title: 'Executive Director',
     description:
-      "Viki began riding at age 52 and proudly rides a Ducati Monster 821 and an MV Agusta Brutale 800RR. She's logged over 100,000 miles since her first ride. She's deeply passionate about riders wearing full gear and equally dedicated to both track riding and long-distance solo adventures. She's fiercely protective of the Phoenix motorcycle scene—a commitment that inspired her to found CLTTF.",
+      "Viki began riding at age 52 and proudly rides a Ducati Monster 821 and an MV Agusta Brutale 800RR. She's logged over 100,000 miles since her first ride. She's deeply passionate about riders wearing gear and equally dedicated to both track riding and long-distance solo adventures. She's fiercely protective of the Phoenix motorcycle scene—a commitment that inspired her to found CLTTF.",
   },
   {
-    name: 'Ginger George',
-    title: 'Board Member',
+    name: 'Mary Lawson',
+    title: 'Director',
     description:
-      'George is an avid track rider, track marshal, and regular volunteer in the motorcycle community. He takes pride in encouraging riders to prioritize safety, no matter the riding conditions.',
+      'Mary, Coach Lawson’s mother, became a cherished figure in the local community after his passing. Now a regular at the track, she enthusiastically cheers on the riders and hosts tailgate parties to keep everyone fed. Mary is an active CLTTF board member and proud grandmother of two!',
   },
   {
     name: 'Christian Ramirez',
@@ -27,10 +27,10 @@ const boardMembers = [
       'Christian, a Marine veteran, lives with his fiancée in El Mirage. He began riding motorcycles in March 2019 and has since immersed himself in skill-building. His progress includes dozens of track days and regular corner work at the track. Christian’s commitment to growth through training and track experience embodies CLTTF.',
   },
   {
-    name: 'Mary Lawson',
-    title: 'Director',
+    name: 'Ginger George',
+    title: 'Board Member',
     description:
-      'Mary, Coach Lawson’s mother, became a cherished figure in the local community after his passing. Now a regular at the track, she enthusiastically cheers on the riders and hosts tailgate parties to keep everyone fed. Mary is an active CLTTF board member and a proud grandmother of two!',
+      'George is an avid track rider, track marshal, and regular volunteer in the motorcycle community. He takes pride in encouraging riders to prioritize safety, no matter the riding conditions.',
   },
 ]
 

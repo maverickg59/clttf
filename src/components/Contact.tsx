@@ -55,7 +55,7 @@ export function Contact() {
     } catch (error: unknown) {
       if (error instanceof Error) {
         const { name } = e.target
-        setFormError((prev) => ({ ...prev, [name]: error.message }))
+        setFormError((prev) => ({ ...prev, [name]: (error as Error).message }))
       }
     }
   }
@@ -91,9 +91,9 @@ export function Contact() {
               Get in touch
             </h2>
             <p className="mt-6 text-lg/8 text-gray-600">
-              Reach out to apply for a scholarship or You'll find us at nearly
-              every Cycle Gear event and most track days in the Pheonix area,
-              but this form works too.
+              Reach out to apply for a scholarship or You&apos;ll find us at
+              nearly every Cycle Gear event and most track days in the Pheonix
+              area, but this form works too.
             </p>
           </div>
         </div>
@@ -194,11 +194,7 @@ export function Contact() {
               </div>
             </div>
             <div className="mt-8 flex justify-end">
-              <Button
-                className="border-2 text-gray-900 ring-0"
-                outline
-                type="submit"
-              >
+              <Button className="border-2" outline type="submit" ring={false}>
                 Send message
               </Button>
             </div>

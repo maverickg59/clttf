@@ -1,6 +1,7 @@
 import { type Metadata } from 'next'
 import { DM_Sans, Inter } from 'next/font/google'
 import clsx from 'clsx'
+import { ScrollProvider } from '@/context/ScrollContext'
 
 import '@/styles/tailwind.css'
 
@@ -40,11 +41,13 @@ export default function RootLayout({
         dmSans.variable,
       )}
     >
-      <body className="flex h-screen min-h-full">
-        <div className="flex w-full flex-col bg-cover bg-center bg-no-repeat">
-          {children}
-        </div>
-      </body>
+      <ScrollProvider>
+        <body className="flex h-screen min-h-full">
+          <div className="flex w-full flex-col bg-cover bg-center bg-no-repeat">
+            {children}
+          </div>
+        </body>
+      </ScrollProvider>
     </html>
   )
 }

@@ -1,13 +1,19 @@
 import { Container } from '@/components/Container'
 import Image from 'next/image'
-import logo from '@/images/clttf_logo_black.png'
 
 export function Footer() {
   return (
     <footer className="flex items-center py-16">
       <Container>
         <div className="mt-10 lg:mt-0 lg:grow lg:basis-0">
-          <Image src={logo} alt="logo" width={120} />
+          <Image
+            src="/images/clttf_logo_black.png"
+            alt="logo"
+            width={120}
+            height={120}
+            className="w-40"
+            unoptimized
+          />
         </div>
       </Container>
       <Container className="flex h-3/4 flex-col items-end justify-between">

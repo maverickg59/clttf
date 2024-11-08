@@ -2,7 +2,6 @@ import Image from 'next/image'
 
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
-import backgroundImage from '@/images/clttf_track_2.jpg'
 
 function ArrowRightIcon(
   props: Readonly<React.ComponentPropsWithoutRef<'svg'>>,
@@ -28,9 +27,10 @@ export function Newsletter() {
         <div className="relative -mx-4 overflow-hidden bg-indigo-50 px-4 py-20 sm:-mx-6 sm:px-6 md:mx-0 md:rounded-4xl md:px-16 xl:px-24 xl:py-36">
           <Image
             className="absolute left-0 top-0 h-full w-full object-none opacity-30"
-            src={backgroundImage}
+            src="/images/clttf_track_2.jpg"
             alt="Coach Lawson riding his Yamaha R3 at Tortilla Flats."
             unoptimized
+            fill
           />
           <div className="relative mx-auto grid max-w-2xl grid-cols-1 gap-x-32 gap-y-14 xl:max-w-none xl:grid-cols-2">
             <div>
