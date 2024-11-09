@@ -8,9 +8,6 @@
     "start": "next start",
     "lint": "next lint"
   },
-  "engines": {
-    "node": ">=18.14"
-  },
   "browserslist": "defaults, not ie <= 11",
   "dependencies": {
     "@headlessui/react": "^2.1.0",
