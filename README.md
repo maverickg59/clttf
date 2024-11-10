@@ -11,6 +11,7 @@ Postgres
 SendGrid
 
 TODO:
-set up to deploy on Cloudflare
-add Facebook page - https://www.facebook.com/Coach-Lawson-Training-and-Track-Foundation-102960111692089/
+add facebook link in contact area
+form validation
 mobile optimization
+handle focus state on buttons and links

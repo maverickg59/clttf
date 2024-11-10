@@ -1,7 +1,10 @@
+'use client'
 import Image from 'next/image'
-
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
+import { Alert } from '@/components/Alert'
+import { useState } from 'react'
+import { z } from 'zod'
 
 function ArrowRightIcon(
   props: Readonly<React.ComponentPropsWithoutRef<'svg'>>,
@@ -21,6 +24,27 @@ function ArrowRightIcon(
 }
 
 export function Newsletter() {
+  const [email, setEmail] = useState('')
+  const [emailValidation, setEmailValidation] = useState('')
+  const EmailSchema = z.string().regex(/^\S+@\S+\.\S+$/, 'ex: john@doe.com')
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    try {
+      const parsedEmail = EmailSchema.safeParse(e.target.value)
+      if (!parsedEmail.success) {
+        setEmailValidation(parsedEmail.error.errors[0].message)
+      } else {
+        setEmailValidation('')
+      }
+      setEmail(e.target.value)
+    } catch (error) {
+      setEmailValidation('An unexpected error occurred.')
+    }
+  }
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const email = new FormData(e.currentTarget).get('email')
+    console.log(email)
+  }
   return (
     <section id="newsletter" aria-label="Newsletter">
       <Container>
@@ -41,13 +65,14 @@ export function Newsletter() {
                 Get updates on events, training, and more.
               </p>
             </div>
-            <form>
+            <form onSubmit={handleSubmit}>
               <h3 className="text-lg font-semibold tracking-tight text-zinc-900">
                 Sign up to our newsletter <span aria-hidden="true">&darr;</span>
               </h3>
               <div className="mt-5 flex rounded-3xl border-none bg-white py-2.5 pr-2.5 shadow-xl shadow-zinc-900/5 focus-within:ring-2 focus-within:ring-zinc-900">
                 <input
                   style={{ boxShadow: 'none' }}
+                  onChange={handleChange}
                   type="email"
                   required
                   placeholder="Email address"
@@ -61,6 +86,7 @@ export function Newsletter() {
                   </span>
                 </Button>
               </div>
+              {emailValidation && <Alert message={emailValidation} />}
             </form>
           </div>
         </div>

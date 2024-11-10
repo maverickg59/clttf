@@ -1,30 +1,36 @@
 'use client'
+import { useScroll } from '@/context/ScrollContext'
 import { useState } from 'react'
 import { Button } from './Button'
-import { Struct, validate, define, object, string } from 'superstruct'
-import { useScroll } from '@/context/ScrollContext'
+import { z } from 'zod'
+import Link from 'next/link'
+import { FacebookIcon } from '@/components/Icons'
 
-type FormState = { [key: string]: string }
-type FormErrorState = { [key: string]: string }
-
-const formSchema = object({
-  firstName: string(),
-  lastName: string(),
-  email: string(),
-  phoneNumber: string(),
-  message: string(),
+const FormSchema = z.object({
+  firstName: z
+    .string()
+    .min(1, 'Minimum: 1 character')
+    .regex(/^[a-zA-Z]+$/, 'A to Z only'),
+  lastName: z
+    .string()
+    .min(1, 'Minimum: 1 character.')
+    .regex(/^[a-zA-Z]+$/, 'A to Z only'),
+  email: z.string().regex(/^\S+@\S+\.\S+$/, 'Example: john@doe.com'),
+  phoneNumber: z
+    .string()
+    .regex(
+      /^(\+1\s?)?(\(?\d{3}\)?[\s.-]?)?\d{3}[\s.-]?\d{4}$/,
+      'Example: (555) 123-4567',
+    )
+    .transform((val) => val.replace(/\D/g, ''))
+    .refine((val) => val.length === 10, {
+      message: 'Example: (555) 123-4567',
+    }),
+  message: z
+    .string()
+    .min(15, 'Minimum: 15 characters')
+    .max(400, 'Maximum: 400 characters'),
 })
-
-const usPhoneNumberRegex = /^(?:\+1\s?)?(\(?\d{3}\)?[\s.-]?)?\d{3}[\s.-]?\d{4}$/
-
-const USPhoneNumber = define('USPhoneNumber', (value) => {
-  return typeof value === 'string' && usPhoneNumberRegex.test(value)
-})
-
-const validators: { [key: string]: Struct<any, any> } = {
-  phone: USPhoneNumber,
-  // email: EmailValidator,
-}
 
 export function Contact() {
   const { targetRef } = useScroll()
@@ -36,49 +42,95 @@ export function Contact() {
     message: '',
   })
 
-  const [formError, setFormError] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phoneNumber: '',
-    message: '',
-  })
-
-  const handlePhoneChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    try {
-      const { name, value } = e.target
-      const [error] = validate(value, USPhoneNumber)
-      if (error) throw error
-      setForm((prev) => ({ ...prev, [name]: value }))
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        const { name } = e.target
-        setFormError((prev) => ({ ...prev, [name]: (error as Error).message }))
-      }
-    }
+  const formValidationInitialState = {
+    firstName: {
+      label: 'Example: John',
+      isError: false,
+    },
+    lastName: { label: 'Example: Doe', isError: false },
+    email: {
+      label: 'Example: johndoe@example.com',
+      isError: false,
+    },
+    phoneNumber: {
+      label: 'Example: (555) 123-4567',
+      isError: false,
+    },
+    message: {
+      label: undefined,
+      isError: false,
+    },
   }
+
+  const [formValidation, setFormValidation] = useState(
+    formValidationInitialState,
+  )
+
+  const formatPhoneNumber = (number: string) => {
+    return number.length === 10
+      ? number.replace(/^(\d{3})(\d{3})(\d{4})$/, '($1) $2-$3')
+      : number
+  }
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
+    const { name, value } = e.currentTarget
     try {
-      const { name, value } = e.target
-      const [error] = validate(value, USPhoneNumber)
-      if (error) throw error
-      setForm((prev) => ({ ...prev, [name]: value }))
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        console.error('Validation error:', error.message)
+      const cleanedValue =
+        name === 'phoneNumber' ? value.replace(/\D/g, '') : value
+      const formattedValue =
+        name === 'phoneNumber' ? formatPhoneNumber(cleanedValue) : value
+      setForm((prev) => ({ ...prev, [name]: formattedValue }))
+      const fieldSchema =
+        FormSchema.shape[name as keyof typeof FormSchema.shape]
+      const parsed = fieldSchema.safeParse(cleanedValue)
+      if (!parsed.success) {
+        setFormValidation((prev) => ({
+          ...prev,
+          [name]: {
+            label: parsed.error.errors[0]?.message || 'Invalid input',
+            isError: true,
+          },
+        }))
+      } else {
+        setFormValidation((prev) => ({
+          ...prev,
+          [name]: { label: '', isError: false },
+        }))
       }
+    } catch (error) {
+      setFormValidation((prev) => ({
+        ...prev,
+        [name]: {
+          label: 'An unexpected error occurred',
+          isError: true,
+        },
+      }))
     }
   }
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if (formSchema.validate(form)) {
-      console.log('Form is valid')
-      console.log(form)
+    const parsedResult = FormSchema.safeParse(form)
+    if (!parsedResult.success) {
+      parsedResult.error.issues.forEach((issue) => {
+        setFormValidation((prev) => ({
+          ...prev,
+          [issue.path[0]]: { label: issue.message, isError: true },
+        }))
+      })
+      parsedResult.error.issues.forEach((issue) => {
+        const { path, message } = issue
+        const inputName = path[0]
+        setFormValidation((prev) => ({
+          ...prev,
+          [inputName]: { label: message, isError: true },
+        }))
+      })
+    } else {
+      setFormValidation(formValidationInitialState)
+      // Send form data to server
     }
   }
 
@@ -90,10 +142,21 @@ export function Contact() {
             <h2 className="text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
               Get in touch
             </h2>
+            <div className="mt-8 flex items-center fill-slate-500 hover:fill-slate-900">
+              <Link
+                href="https://www.facebook.com/Coach-Lawson-Training-and-Track-Foundation-102960111692089/"
+                className="mt-6 text-lg/8 text-gray-600 hover:text-slate-900 md:mt-0"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                You can follow us on Facebook
+              </Link>
+              <FacebookIcon className="ml-1 h-5 w-5" />
+            </div>
             <p className="mt-6 text-lg/8 text-gray-600">
-              Reach out to apply for a scholarship or You&apos;ll find us at
-              nearly every Cycle Gear event and most track days in the Pheonix
-              area, but this form works too.
+              Or send a message with this form. You&apos;ll find us at nearly
+              every Cycle Gear event and most track days in the Pheonix area,
+              but this form works too.
             </p>
           </div>
         </div>
@@ -110,7 +173,7 @@ export function Contact() {
                 >
                   First name
                 </label>
-                <div className="mt-2.5">
+                <div className="mt-2.5 text-right">
                   <input
                     onChange={handleChange}
                     id="firstName"
@@ -118,6 +181,11 @@ export function Contact() {
                     autoComplete="given-name"
                     className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-zinc-600 sm:text-sm/6"
                   />
+                  <span className="block min-h-[1.25em] text-xs text-red-600">
+                    {formValidation?.firstName?.isError
+                      ? formValidation.firstName.label
+                      : '\u00A0'}
+                  </span>
                 </div>
               </div>
               <div>
@@ -127,7 +195,7 @@ export function Contact() {
                 >
                   Last name
                 </label>
-                <div className="mt-2.5">
+                <div className="mt-2.5 text-right">
                   <input
                     onChange={handleChange}
                     id="lastName"
@@ -135,6 +203,11 @@ export function Contact() {
                     autoComplete="family-name"
                     className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-zinc-600 sm:text-sm/6"
                   />
+                  <span className="block min-h-[1.25em] text-xs text-red-600">
+                    {formValidation?.lastName?.isError
+                      ? formValidation.lastName.label
+                      : '\u00A0'}
+                  </span>
                 </div>
               </div>
               <div className="sm:col-span-2">
@@ -144,7 +217,7 @@ export function Contact() {
                 >
                   Email
                 </label>
-                <div className="mt-2.5">
+                <div className="mt-2.5 text-right">
                   <input
                     onChange={handleChange}
                     id="email"
@@ -152,6 +225,11 @@ export function Contact() {
                     autoComplete="email"
                     className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-zinc-600 sm:text-sm/6"
                   />
+                  <span className="block min-h-[1.25em] text-xs text-red-600">
+                    {formValidation?.email.isError
+                      ? formValidation.email.label
+                      : '\u00A0'}
+                  </span>
                 </div>
               </div>
               <div className="sm:col-span-2">
@@ -161,16 +239,19 @@ export function Contact() {
                 >
                   Phone number
                 </label>
-                <div className="mt-2.5">
+                <div className="mt-2.5 text-right">
                   <input
-                    onChange={handlePhoneChange}
+                    onChange={handleChange}
+                    value={form.phoneNumber}
                     id="phoneNumber"
                     name="phoneNumber"
                     autoComplete="tel"
                     className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-zinc-600 sm:text-sm/6"
                   />
-                  <span>
-                    {formError?.phoneNumber ? formError.phoneNumber : ''}
+                  <span className="block min-h-[1.25em] text-xs text-red-600">
+                    {formValidation?.phoneNumber.isError
+                      ? formValidation.phoneNumber.label
+                      : '\u00A0'}
                   </span>
                 </div>
               </div>
@@ -181,7 +262,7 @@ export function Contact() {
                 >
                   Message
                 </label>
-                <div className="mt-2.5">
+                <div className="mt-2.5 text-right">
                   <textarea
                     onChange={handleChange}
                     id="message"
@@ -190,6 +271,11 @@ export function Contact() {
                     className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-zinc-600 sm:text-sm/6"
                     defaultValue={''}
                   />
+                  <span className="block min-h-[1.25em] text-xs text-red-600">
+                    {formValidation?.message?.isError
+                      ? formValidation.message.label
+                      : '\u00A0'}
+                  </span>
                 </div>
               </div>
             </div>

@@ -12,7 +12,7 @@ const boardMembers = [
     name: 'Viki Ducati',
     title: 'Executive Director',
     description:
-      "Viki began riding at age 52 and proudly rides a Ducati Monster 821 and an MV Agusta Brutale 800RR. She's logged over 100,000 miles since her first ride. She's deeply passionate about riders wearing gear and equally dedicated to both track riding and long-distance solo adventures. She's fiercely protective of the Phoenix motorcycle scene—a commitment that inspired her to found CLTTF.",
+      "Viki began riding at age 52 and proudly rides a Ducati Monster 821, a Yamaha FZ-09, and a Honda Grom. She's logged over 180,000 miles since her first ride. She's deeply passionate about riders wearing gear and equally dedicated to both track riding and long-distance solo adventures. She's fiercely protective of the Phoenix motorcycle scene—a commitment that inspired her to found CLTTF.",
   },
   {
     name: 'Mary Lawson',
@@ -24,7 +24,7 @@ const boardMembers = [
     name: 'Christian Ramirez',
     title: 'Board Member',
     description:
-      'Christian, a Marine veteran, lives with his fiancée in El Mirage. He began riding motorcycles in March 2019 and has since immersed himself in skill-building. His progress includes dozens of track days and regular corner work at the track. Christian’s commitment to growth through training and track experience embodies CLTTF.',
+      'Christian, a Marine veteran, lives with his fiancée in El Mirage. He began riding motorcycles in March 2019 and has since immersed himself in skill-building. His progress includes dozens of track days, regular corner work at the track, and obtaining an ASMA race license. Christian’s commitment to growth through training and track experience embodies CLTTF.',
   },
   {
     name: 'Ginger George',

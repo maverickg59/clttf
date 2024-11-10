@@ -56,7 +56,7 @@ export function Inspiration() {
             <Image
               alt="Coach Mike Lawson hanging out during a motorcycle ride."
               src="/images/clttf_mike_lawson.jpg"
-              className="aspect-[3/2] rounded-b-5xl object-cover sm:rounded-r-5xl sm:rounded-bl-none lg:aspect-auto"
+              className="rounded-b-5xl object-cover sm:rounded-r-5xl sm:rounded-bl-none lg:aspect-auto"
               unoptimized
               width={600}
               height={200}

@@ -1,5 +1,7 @@
 import { Container } from '@/components/Container'
 import Image from 'next/image'
+import Link from 'next/link'
+import { FacebookIcon } from '@/components/Icons'
 
 export function Footer() {
   return (
@@ -17,6 +19,17 @@ export function Footer() {
         </div>
       </Container>
       <Container className="flex h-3/4 flex-col items-end justify-between">
+        <div className="flex items-center fill-slate-500 text-slate-500 hover:fill-slate-900 hover:text-slate-900">
+          <Link
+            href="https://www.facebook.com/Coach-Lawson-Training-and-Track-Foundation-102960111692089/"
+            className="mt-6 text-sm md:mt-0"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Follow us on Facebook
+          </Link>
+          <FacebookIcon className="ml-1 h-5 w-5" />
+        </div>
         <p className="mt-6 text-sm text-slate-500 md:mt-0">
           Copyright &copy; {new Date().getFullYear()} Coach Lawson Training and
           Track Foundation.
@@ -26,16 +39,16 @@ export function Footer() {
           profit organization.
         </p>
         <p className="mt-6 text-sm text-slate-500 md:mt-0">
-          The development and maintainance of this site is provided free of
+          The development and maintenance of this site is provided free of
           charge by{' '}
-          <a
+          <Link
             href="https://chriswhite.rocks"
             target="_blank"
             rel="noopener noreferrer"
-            className="underline underline-offset-4"
+            className="underline underline-offset-4 hover:text-slate-900"
           >
             chriswhite.rocks
-          </a>
+          </Link>
         </p>
       </Container>
     </footer>
