@@ -6,12 +6,10 @@ Typescript
 Next.js
 React.js
 Tailwind CSS
-Superstruct
+Zod
 Postgres
 SendGrid
 
 TODO:
-add facebook link in contact area
-form validation
+submit functionality
 mobile optimization
-handle focus state on buttons and links

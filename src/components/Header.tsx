@@ -3,6 +3,7 @@ import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
 import Image from 'next/image'
 import { useScroll } from '@/context/ScrollContext'
+import Link from 'next/link'
 
 export function Header() {
   const { scrollToTarget } = useScroll()
@@ -11,16 +12,16 @@ export function Header() {
     <header className="relative z-50 flex-none">
       <Container className="flex flex-wrap items-center justify-center sm:justify-between lg:flex-nowrap">
         <div className="mt-10 lg:mt-0 lg:grow lg:basis-0">
-          <a href="/">
+          <Link className="focus:outline-zinc-900" href="/">
             <Image
               src="/images/clttf_logo_black.png"
               alt="logo"
-              className="w-20"
+              className="w-20 border-0"
               width={140}
               height={140}
               unoptimized
             />
-          </a>
+          </Link>
         </div>
         <div className="hidden sm:mt-10 sm:flex lg:mt-0 lg:grow lg:basis-0 lg:justify-end">
           <Button outline onClick={scrollToTarget}>

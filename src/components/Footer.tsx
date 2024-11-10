@@ -19,10 +19,10 @@ export function Footer() {
         </div>
       </Container>
       <Container className="flex h-3/4 flex-col items-end justify-between">
-        <div className="flex items-center fill-slate-500 text-slate-500 hover:fill-slate-900 hover:text-slate-900">
+        <div className="flex items-center fill-zinc-500 text-zinc-500 hover:fill-zinc-900 hover:text-zinc-900">
           <Link
             href="https://www.facebook.com/Coach-Lawson-Training-and-Track-Foundation-102960111692089/"
-            className="mt-6 text-sm md:mt-0"
+            className="mt-6 text-sm focus:outline-zinc-500 md:mt-0"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -45,7 +45,7 @@ export function Footer() {
             href="https://chriswhite.rocks"
             target="_blank"
             rel="noopener noreferrer"
-            className="underline underline-offset-4 hover:text-slate-900"
+            className="underline underline-offset-4 hover:text-zinc-900 focus:outline-zinc-500"
           >
             chriswhite.rocks
           </Link>

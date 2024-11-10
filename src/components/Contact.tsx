@@ -3,8 +3,6 @@ import { useScroll } from '@/context/ScrollContext'
 import { useState } from 'react'
 import { Button } from './Button'
 import { z } from 'zod'
-import Link from 'next/link'
-import { FacebookIcon } from '@/components/Icons'
 
 const FormSchema = z.object({
   firstName: z
@@ -142,21 +140,8 @@ export function Contact() {
             <h2 className="text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
               Get in touch
             </h2>
-            <div className="mt-8 flex items-center fill-slate-500 hover:fill-slate-900">
-              <Link
-                href="https://www.facebook.com/Coach-Lawson-Training-and-Track-Foundation-102960111692089/"
-                className="mt-6 text-lg/8 text-gray-600 hover:text-slate-900 md:mt-0"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                You can follow us on Facebook
-              </Link>
-              <FacebookIcon className="ml-1 h-5 w-5" />
-            </div>
-            <p className="mt-6 text-lg/8 text-gray-600">
-              Or send a message with this form. You&apos;ll find us at nearly
-              every Cycle Gear event and most track days in the Pheonix area,
-              but this form works too.
+            <p className="mt-4 text-lg/8 text-gray-600">
+              Send a message and we'll respond as soon as possible.
             </p>
           </div>
         </div>

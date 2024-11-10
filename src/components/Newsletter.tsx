@@ -3,6 +3,8 @@ import Image from 'next/image'
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
 import { Alert } from '@/components/Alert'
+import Link from 'next/link'
+import { FacebookIcon } from '@/components/Icons'
 import { useState } from 'react'
 import { z } from 'zod'
 
@@ -24,27 +26,26 @@ function ArrowRightIcon(
 }
 
 export function Newsletter() {
-  const [email, setEmail] = useState('')
   const [emailValidation, setEmailValidation] = useState('')
   const EmailSchema = z.string().regex(/^\S+@\S+\.\S+$/, 'ex: john@doe.com')
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const email = new FormData(e.currentTarget).get('email')
     try {
-      const parsedEmail = EmailSchema.safeParse(e.target.value)
+      const parsedEmail = EmailSchema.safeParse(email)
       if (!parsedEmail.success) {
         setEmailValidation(parsedEmail.error.errors[0].message)
       } else {
         setEmailValidation('')
       }
-      setEmail(e.target.value)
+      console.log(email)
+      // Send email to backend
     } catch (error) {
       setEmailValidation('An unexpected error occurred.')
     }
   }
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    const email = new FormData(e.currentTarget).get('email')
-    console.log(email)
-  }
+
   return (
     <section id="newsletter" aria-label="Newsletter">
       <Container>
@@ -64,6 +65,17 @@ export function Newsletter() {
               <p className="mt-4 text-lg tracking-tight text-zinc-900">
                 Get updates on events, training, and more.
               </p>
+              <div className="mt-3 flex items-center fill-zinc-900 text-lg text-zinc-900 hover:fill-zinc-500 hover:text-zinc-600">
+                <Link
+                  href="https://www.facebook.com/Coach-Lawson-Training-and-Track-Foundation-102960111692089/"
+                  className="text-md mt-6 focus:outline-zinc-900 md:mt-0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Follow us on Facebook too!
+                </Link>
+                <FacebookIcon className="ml-2 h-7 w-7" />
+              </div>
             </div>
             <form onSubmit={handleSubmit}>
               <h3 className="text-lg font-semibold tracking-tight text-zinc-900">
@@ -72,11 +84,11 @@ export function Newsletter() {
               <div className="mt-5 flex rounded-3xl border-none bg-white py-2.5 pr-2.5 shadow-xl shadow-zinc-900/5 focus-within:ring-2 focus-within:ring-zinc-900">
                 <input
                   style={{ boxShadow: 'none' }}
-                  onChange={handleChange}
-                  type="email"
                   required
                   placeholder="Email address"
                   aria-label="Email address"
+                  id="email"
+                  name="email"
                   className="-my-2.5 flex-auto border-none bg-transparent pl-6 pr-2.5 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none"
                 />
                 <Button rounded outline type="submit">
