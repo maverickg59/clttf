@@ -13,7 +13,12 @@ const FormSchema = z.object({
     .string()
     .min(1, 'Minimum: 1 character.')
     .regex(/^[a-zA-Z]+$/, 'A to Z only'),
-  email: z.string().regex(/^\S+@\S+\.\S+$/, 'Example: john@doe.com'),
+  email: z
+    .string()
+    .regex(
+      /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
+      'Example: john@doe.com',
+    ),
   phoneNumber: z
     .string()
     .regex(
@@ -141,7 +146,7 @@ export function Contact() {
               Get in touch
             </h2>
             <p className="mt-4 text-lg/8 text-gray-600">
-              Send a message and we'll respond as soon as possible.
+              Send a message and we&apos;ll respond as soon as possible.
             </p>
           </div>
         </div>

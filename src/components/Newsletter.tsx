@@ -2,48 +2,65 @@
 import Image from 'next/image'
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
+import { ArrowRightIcon } from '@/components/Icons'
 import { Alert } from '@/components/Alert'
 import Link from 'next/link'
 import { FacebookIcon } from '@/components/Icons'
 import { useState } from 'react'
 import { z } from 'zod'
 
-function ArrowRightIcon(
-  props: Readonly<React.ComponentPropsWithoutRef<'svg'>>,
-) {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 24 24" {...props}>
-      <path
-        d="m14 7 5 5-5 5M19 12H5"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  )
+async function submitEmail(email: string) {
+  const url = process.env.NEXT_PUBLIC_NEWSLETTER_ENDPOINT
+  const key = process.env.NEXT_PUBLIC_NEWSLETTER_API_KEY
+  const response = await fetch(`${url}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      ...(key && { 'x-api-key': key }),
+    },
+    body: JSON.stringify({ subscriber_email: email }),
+  })
+
+  if (!response.ok) {
+    throw new Error()
+  }
+  return await response.json()
 }
 
 export function Newsletter() {
   const [emailValidation, setEmailValidation] = useState('')
+  const [isReceived, setIsReceived] = useState('')
   const EmailSchema = z.string().regex(/^\S+@\S+\.\S+$/, 'ex: john@doe.com')
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const email = new FormData(e.currentTarget).get('email')
     try {
       const parsedEmail = EmailSchema.safeParse(email)
       if (!parsedEmail.success) {
         setEmailValidation(parsedEmail.error.errors[0].message)
+        return
       } else {
         setEmailValidation('')
       }
-      console.log(email)
-      // Send email to backend
+      const submitted = await submitEmail(email as string)
+      if (submitted) {
+        setIsReceived(submitted.message)
+        setTimeout(() => {
+          setIsReceived('')
+        }, 2000)
+      }
     } catch (error) {
       setEmailValidation('An unexpected error occurred.')
+      setTimeout(() => {
+        setEmailValidation('')
+      }, 2000)
     }
+  }
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmailValidation('')
+    setIsReceived('')
   }
 
   return (
@@ -84,7 +101,7 @@ export function Newsletter() {
               <div className="mt-5 flex rounded-3xl border-none bg-white py-2.5 pr-2.5 shadow-xl shadow-zinc-900/5 focus-within:ring-2 focus-within:ring-zinc-900">
                 <input
                   style={{ boxShadow: 'none' }}
-                  required
+                  onChange={handleChange}
                   placeholder="Email address"
                   aria-label="Email address"
                   id="email"
@@ -99,6 +116,7 @@ export function Newsletter() {
                 </Button>
               </div>
               {emailValidation && <Alert message={emailValidation} />}
+              {isReceived && <Alert success message={isReceived} />}
             </form>
           </div>
         </div>
