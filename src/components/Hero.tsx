@@ -1,9 +1,12 @@
+'use client'
 import { BackgroundImage } from '@/components/BackgroundImage'
 import { Container } from '@/components/Container'
 import { Button } from '@/components/Button'
+import { useScroll } from '@/context/ScrollContext'
 import Image from 'next/image'
 
 export function Hero() {
+  const { scrollToTarget } = useScroll()
   return (
     <section className="relative pb-20 pt-10 sm:pt-32">
       <BackgroundImage className="-bottom-14 -top-36">
@@ -21,7 +24,7 @@ export function Hero() {
           <Button
             outline
             className="text-white ring-white"
-            href="https://www.paypal.com/donate?hosted_button_id=VMLY57KNSCXQS"
+            onClick={scrollToTarget}
           >
             Apply
           </Button>
