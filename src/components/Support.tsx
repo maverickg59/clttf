@@ -34,9 +34,9 @@ export function Support() {
       className="py-20 sm:my-32"
     >
       <div className="relative mt-14 sm:mt-24">
-        <BackgroundImage className="-bottom-40 -top-40 scale-x-[-1] opacity-90">
+        <BackgroundImage className="-bottom-40 -top-40 hidden scale-x-[-1] opacity-90 sm:block">
           <Image
-            className="top-0 h-full w-full object-cover"
+            className="left-0 top-0 h-full w-full object-contain sm:object-cover"
             src="/images/clttf_tf_3.jpg"
             alt="Coach Lawson riding his R3 at the Phoenix Kart Racing Association track."
             priority

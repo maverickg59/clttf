@@ -6,7 +6,7 @@ import { ArrowRightIcon } from '@/components/Icons'
 import { Alert } from '@/components/Alert'
 import Link from 'next/link'
 import { FacebookIcon } from '@/components/Icons'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { z } from 'zod'
 
 async function submitEmail(email: string) {
@@ -30,7 +30,13 @@ async function submitEmail(email: string) {
 export function Newsletter() {
   const [emailValidation, setEmailValidation] = useState('')
   const [isReceived, setIsReceived] = useState('')
-  const EmailSchema = z.string().regex(/^\S+@\S+\.\S+$/, 'ex: john@doe.com')
+  const EmailSchema = z
+    .string()
+    .regex(
+      /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
+      'ex: john@doe.com',
+    )
+  const formRef = useRef<HTMLFormElement>(null)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -46,15 +52,23 @@ export function Newsletter() {
       const submitted = await submitEmail(email as string)
       if (submitted) {
         setIsReceived(submitted.message)
+        formRef.current?.reset()
         setTimeout(() => {
           setIsReceived('')
         }, 2000)
       }
     } catch (error) {
-      setEmailValidation('An unexpected error occurred.')
-      setTimeout(() => {
-        setEmailValidation('')
-      }, 2000)
+      if (error instanceof Error) {
+        setEmailValidation(error.message)
+        setTimeout(() => {
+          setEmailValidation('')
+        }, 2000)
+      } else {
+        setEmailValidation('Unexpected error occurred')
+        setTimeout(() => {
+          setEmailValidation('')
+        }, 2000)
+      }
     }
   }
 
@@ -65,10 +79,10 @@ export function Newsletter() {
 
   return (
     <section id="newsletter" aria-label="Newsletter">
-      <Container>
+      <Container className="my-20">
         <div className="relative -mx-4 overflow-hidden bg-indigo-50 px-4 py-20 sm:-mx-6 sm:px-6 md:mx-0 md:rounded-4xl md:px-16 xl:px-24 xl:py-36">
           <Image
-            className="absolute left-0 top-0 h-full w-full object-none opacity-30"
+            className="absolute left-0 top-0 object-cover opacity-30 sm:h-full sm:w-full sm:object-none"
             src="/images/clttf_track_2.jpg"
             alt="Coach Lawson riding his Yamaha R3 at Tortilla Flats."
             unoptimized
@@ -82,10 +96,10 @@ export function Newsletter() {
               <p className="mt-4 text-lg tracking-tight text-zinc-900">
                 Get updates on events, training, and more.
               </p>
-              <div className="mt-3 flex items-center fill-zinc-900 text-lg text-zinc-900 hover:fill-zinc-500 hover:text-zinc-600">
+              <div className="mt-3 flex items-center fill-zinc-900 align-middle text-lg text-zinc-900 hover:fill-zinc-500 hover:text-zinc-600">
                 <Link
                   href="https://www.facebook.com/Coach-Lawson-Training-and-Track-Foundation-102960111692089/"
-                  className="text-md mt-6 focus:outline-zinc-900 md:mt-0"
+                  className="text-md focus:outline-zinc-900 md:mt-0"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -94,7 +108,7 @@ export function Newsletter() {
                 <FacebookIcon className="ml-2 h-7 w-7" />
               </div>
             </div>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} ref={formRef}>
               <h3 className="text-lg font-semibold tracking-tight text-zinc-900">
                 Sign up to our newsletter <span aria-hidden="true">&darr;</span>
               </h3>

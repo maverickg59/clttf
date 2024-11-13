@@ -110,7 +110,7 @@ export function TopLeftDoubleRowBentoBox({
   return (
     <div className="flex p-px lg:col-span-3">
       <div className="overflow-hidden rounded-lg bg-white ring-1 ring-black/15 max-lg:rounded-t-[2rem] lg:rounded-tl-[2rem]">
-        <div className="p-10">
+        <div className="p-10 text-center sm:text-left">
           <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">
             {name}
           </p>
@@ -132,7 +132,7 @@ export function BottomLeftDoubleRowBentoBox({
   return (
     <div className="flex p-px lg:col-span-3">
       <div className="overflow-hidden rounded-lg bg-white ring-1 ring-black/15 lg:rounded-bl-[2rem]">
-        <div className="p-10">
+        <div className="p-10 text-center sm:text-left">
           <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">
             {name}
           </p>
@@ -154,7 +154,7 @@ export function TopRightDoubleRowBentoBox({
   return (
     <div className="flex p-px lg:col-span-3">
       <div className="overflow-hidden rounded-lg bg-white ring-1 ring-black/15 lg:rounded-tr-[2rem]">
-        <div className="p-10">
+        <div className="p-10 text-center sm:text-left">
           <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">
             {name}
           </p>
@@ -176,7 +176,7 @@ export function BottomRightDoubleRowBentoBox({
   return (
     <div className="flex p-px lg:col-span-3">
       <div className="overflow-hidden rounded-lg bg-white ring-1 ring-black/15 max-lg:rounded-b-[2rem] lg:rounded-br-[2rem]">
-        <div className="p-10">
+        <div className="p-10 text-center sm:text-left">
           <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">
             {name}
           </p>

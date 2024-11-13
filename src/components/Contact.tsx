@@ -138,145 +138,147 @@ export function Contact() {
   }
 
   return (
-    <div ref={targetRef} className="relative isolate">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
-        <div className="relative px-6 pb-20 pt-24 lg:static lg:px-8">
-          <div className="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
-            <h2 className="text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
-              Get in touch
-            </h2>
-            <p className="mt-4 text-lg/8 text-gray-600">
-              Send a message and we&apos;ll respond as soon as possible.
-            </p>
+    <section>
+      <div ref={targetRef} className="relative isolate">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
+          <div className="relative px-6 pb-10 pt-24 lg:static lg:px-8 lg:pb-20">
+            <div className="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
+              <h2 className="text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
+                Get in touch
+              </h2>
+              <p className="mt-4 text-lg/8 text-gray-600">
+                Send a message and we&apos;ll respond as soon as possible.
+              </p>
+            </div>
           </div>
+          <form
+            onSubmit={handleSubmit}
+            className="px-6 pb-24 pt-10 sm:pb-32 lg:px-8 lg:pt-20"
+          >
+            <div className="mx-auto max-w-xl lg:mr-0 lg:max-w-lg">
+              <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+                <div>
+                  <label
+                    htmlFor="firstName"
+                    className="block text-sm/6 font-semibold text-gray-900"
+                  >
+                    First name
+                  </label>
+                  <div className="mt-2.5 text-right">
+                    <input
+                      onChange={handleChange}
+                      id="firstName"
+                      name="firstName"
+                      autoComplete="given-name"
+                      className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-zinc-600 sm:text-sm/6"
+                    />
+                    <span className="block min-h-[1.25em] text-xs text-red-600">
+                      {formValidation?.firstName?.isError
+                        ? formValidation.firstName.label
+                        : '\u00A0'}
+                    </span>
+                  </div>
+                </div>
+                <div>
+                  <label
+                    htmlFor="lastName"
+                    className="block text-sm/6 font-semibold text-gray-900"
+                  >
+                    Last name
+                  </label>
+                  <div className="mt-2.5 text-right">
+                    <input
+                      onChange={handleChange}
+                      id="lastName"
+                      name="lastName"
+                      autoComplete="family-name"
+                      className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-zinc-600 sm:text-sm/6"
+                    />
+                    <span className="block min-h-[1.25em] text-xs text-red-600">
+                      {formValidation?.lastName?.isError
+                        ? formValidation.lastName.label
+                        : '\u00A0'}
+                    </span>
+                  </div>
+                </div>
+                <div className="sm:col-span-2">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm/6 font-semibold text-gray-900"
+                  >
+                    Email
+                  </label>
+                  <div className="mt-2.5 text-right">
+                    <input
+                      onChange={handleChange}
+                      id="email"
+                      name="email"
+                      autoComplete="email"
+                      className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-zinc-600 sm:text-sm/6"
+                    />
+                    <span className="block min-h-[1.25em] text-xs text-red-600">
+                      {formValidation?.email.isError
+                        ? formValidation.email.label
+                        : '\u00A0'}
+                    </span>
+                  </div>
+                </div>
+                <div className="sm:col-span-2">
+                  <label
+                    htmlFor="phoneNumber"
+                    className="block text-sm/6 font-semibold text-gray-900"
+                  >
+                    Phone number
+                  </label>
+                  <div className="mt-2.5 text-right">
+                    <input
+                      onChange={handleChange}
+                      value={form.phoneNumber}
+                      id="phoneNumber"
+                      name="phoneNumber"
+                      autoComplete="tel"
+                      className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-zinc-600 sm:text-sm/6"
+                    />
+                    <span className="block min-h-[1.25em] text-xs text-red-600">
+                      {formValidation?.phoneNumber.isError
+                        ? formValidation.phoneNumber.label
+                        : '\u00A0'}
+                    </span>
+                  </div>
+                </div>
+                <div className="sm:col-span-2">
+                  <label
+                    htmlFor="message"
+                    className="block text-sm/6 font-semibold text-gray-900"
+                  >
+                    Message
+                  </label>
+                  <div className="mt-2.5 text-right">
+                    <textarea
+                      onChange={handleChange}
+                      id="message"
+                      name="message"
+                      rows={4}
+                      className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-zinc-600 sm:text-sm/6"
+                      defaultValue={''}
+                    />
+                    <span className="block min-h-[1.25em] text-xs text-red-600">
+                      {formValidation?.message?.isError
+                        ? formValidation.message.label
+                        : '\u00A0'}
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-8 flex justify-end">
+                <Button className="border-2" outline type="submit" ring={false}>
+                  Send message
+                </Button>
+              </div>
+            </div>
+          </form>
         </div>
-        <form
-          onSubmit={handleSubmit}
-          className="px-6 pb-24 pt-20 sm:pb-32 lg:px-8"
-        >
-          <div className="mx-auto max-w-xl lg:mr-0 lg:max-w-lg">
-            <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
-              <div>
-                <label
-                  htmlFor="firstName"
-                  className="block text-sm/6 font-semibold text-gray-900"
-                >
-                  First name
-                </label>
-                <div className="mt-2.5 text-right">
-                  <input
-                    onChange={handleChange}
-                    id="firstName"
-                    name="firstName"
-                    autoComplete="given-name"
-                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-zinc-600 sm:text-sm/6"
-                  />
-                  <span className="block min-h-[1.25em] text-xs text-red-600">
-                    {formValidation?.firstName?.isError
-                      ? formValidation.firstName.label
-                      : '\u00A0'}
-                  </span>
-                </div>
-              </div>
-              <div>
-                <label
-                  htmlFor="lastName"
-                  className="block text-sm/6 font-semibold text-gray-900"
-                >
-                  Last name
-                </label>
-                <div className="mt-2.5 text-right">
-                  <input
-                    onChange={handleChange}
-                    id="lastName"
-                    name="lastName"
-                    autoComplete="family-name"
-                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-zinc-600 sm:text-sm/6"
-                  />
-                  <span className="block min-h-[1.25em] text-xs text-red-600">
-                    {formValidation?.lastName?.isError
-                      ? formValidation.lastName.label
-                      : '\u00A0'}
-                  </span>
-                </div>
-              </div>
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="email"
-                  className="block text-sm/6 font-semibold text-gray-900"
-                >
-                  Email
-                </label>
-                <div className="mt-2.5 text-right">
-                  <input
-                    onChange={handleChange}
-                    id="email"
-                    name="email"
-                    autoComplete="email"
-                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-zinc-600 sm:text-sm/6"
-                  />
-                  <span className="block min-h-[1.25em] text-xs text-red-600">
-                    {formValidation?.email.isError
-                      ? formValidation.email.label
-                      : '\u00A0'}
-                  </span>
-                </div>
-              </div>
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="phoneNumber"
-                  className="block text-sm/6 font-semibold text-gray-900"
-                >
-                  Phone number
-                </label>
-                <div className="mt-2.5 text-right">
-                  <input
-                    onChange={handleChange}
-                    value={form.phoneNumber}
-                    id="phoneNumber"
-                    name="phoneNumber"
-                    autoComplete="tel"
-                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-zinc-600 sm:text-sm/6"
-                  />
-                  <span className="block min-h-[1.25em] text-xs text-red-600">
-                    {formValidation?.phoneNumber.isError
-                      ? formValidation.phoneNumber.label
-                      : '\u00A0'}
-                  </span>
-                </div>
-              </div>
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="message"
-                  className="block text-sm/6 font-semibold text-gray-900"
-                >
-                  Message
-                </label>
-                <div className="mt-2.5 text-right">
-                  <textarea
-                    onChange={handleChange}
-                    id="message"
-                    name="message"
-                    rows={4}
-                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-zinc-600 sm:text-sm/6"
-                    defaultValue={''}
-                  />
-                  <span className="block min-h-[1.25em] text-xs text-red-600">
-                    {formValidation?.message?.isError
-                      ? formValidation.message.label
-                      : '\u00A0'}
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div className="mt-8 flex justify-end">
-              <Button className="border-2" outline type="submit" ring={false}>
-                Send message
-              </Button>
-            </div>
-          </div>
-        </form>
       </div>
-    </div>
+    </section>
   )
 }

@@ -5,40 +5,38 @@ import { FacebookIcon } from '@/components/Icons'
 
 export function Footer() {
   return (
-    <footer className="flex items-center py-16">
+    <footer className="flex flex-col py-16 text-center lg:flex-row">
       <Container>
-        <div className="mt-10 lg:mt-0 lg:grow lg:basis-0">
-          <Image
-            src="/images/clttf_logo_black.png"
-            alt="logo"
-            width={120}
-            height={120}
-            className="w-40"
-            unoptimized
-          />
-        </div>
+        <Image
+          src="/images/clttf_logo_black.png"
+          alt="logo"
+          width={120}
+          height={120}
+          className="w-40"
+          unoptimized
+        />
       </Container>
-      <Container className="flex h-3/4 flex-col items-end justify-between">
-        <div className="flex items-center fill-zinc-500 text-zinc-500 hover:fill-zinc-900 hover:text-zinc-900">
+      <Container className="flex flex-col justify-center gap-2 lg:items-end lg:text-right">
+        <p className="flex items-center justify-center fill-zinc-500 text-zinc-500 hover:fill-zinc-900 hover:text-zinc-900">
           <Link
             href="https://www.facebook.com/Coach-Lawson-Training-and-Track-Foundation-102960111692089/"
-            className="mt-6 text-sm focus:outline-zinc-500 md:mt-0"
+            className="text-sm focus:outline-zinc-500 md:mt-0"
             target="_blank"
             rel="noopener noreferrer"
           >
             Follow us on Facebook
           </Link>
           <FacebookIcon className="ml-1 h-5 w-5" />
-        </div>
-        <p className="mt-6 text-sm text-slate-500 md:mt-0">
+        </p>
+        <p className="text-sm text-slate-500 md:mt-0">
           Copyright &copy; {new Date().getFullYear()} Coach Lawson Training and
           Track Foundation.
         </p>
-        <p className="mt-6 text-sm text-slate-500 md:mt-0">
+        <p className="text-sm text-slate-500 md:mt-0">
           Coach Lawson Training and Track Foundation is a 501(c)(3) not for
           profit organization.
         </p>
-        <p className="mt-6 text-sm text-slate-500 md:mt-0">
+        <p className="text-sm text-slate-500 md:mt-0">
           The development and maintenance of this site is provided free of
           charge by{' '}
           <Link

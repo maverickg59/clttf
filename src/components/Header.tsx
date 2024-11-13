@@ -11,12 +11,23 @@ export function Header() {
   return (
     <header className="relative z-50 flex-none">
       <Container className="flex flex-wrap items-center justify-center sm:justify-between lg:flex-nowrap">
-        <div className="mt-10 lg:mt-0 lg:grow lg:basis-0">
-          <Link className="focus:outline-zinc-900" href="/">
+        <div className="mt-4 sm:mt-10 lg:mt-0 lg:grow lg:basis-0">
+          <Link
+            className="focus:outline-white sm:focus:outline-zinc-900"
+            href="/"
+          >
             <Image
               src="/images/clttf_logo_black.png"
               alt="logo"
-              className="w-20 border-0"
+              className="hidden w-20 border-0 sm:block"
+              width={140}
+              height={140}
+              unoptimized
+            />
+            <Image
+              src="/images/clttf_logo_white.png"
+              alt="logo"
+              className="block w-20 border-0 sm:hidden"
               width={140}
               height={140}
               unoptimized
