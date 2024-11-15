@@ -1,8 +1,10 @@
 'use client'
 import { useScroll } from '@/context/ScrollContext'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
+import { Alert } from '@/components/Alert'
 import { Button } from './Button'
 import { z } from 'zod'
+import clsx from 'clsx'
 
 const FormSchema = z.object({
   firstName: z
@@ -33,96 +35,128 @@ const FormSchema = z.object({
     .string()
     .min(15, 'Minimum: 15 characters')
     .max(400, 'Maximum: 400 characters'),
+  beetlepot: z.string(),
 })
 
-export function Contact() {
-  const { targetRef } = useScroll()
-  const [form, setForm] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phoneNumber: '',
-    message: '',
-  })
+const formValidationInitialState = {
+  firstName: {
+    label: 'Example: John',
+    isError: false,
+  },
+  lastName: { label: 'Example: Doe', isError: false },
+  email: {
+    label: 'Example: johndoe@example.com',
+    isError: false,
+  },
+  phoneNumber: {
+    label: 'Example: (555) 123-4567',
+    isError: false,
+  },
+  message: {
+    label: undefined,
+    isError: false,
+  },
+}
+const formInitialState = {
+  firstName: '',
+  lastName: '',
+  email: '',
+  phoneNumber: '',
+  message: '',
+  beetlepot: '',
+}
 
-  const formValidationInitialState = {
-    firstName: {
-      label: 'Example: John',
-      isError: false,
-    },
-    lastName: { label: 'Example: Doe', isError: false },
-    email: {
-      label: 'Example: johndoe@example.com',
-      isError: false,
-    },
-    phoneNumber: {
-      label: 'Example: (555) 123-4567',
-      isError: false,
-    },
-    message: {
-      label: undefined,
-      isError: false,
-    },
-  }
+const formatPhoneNumber = (number: string) => {
+  return number.length === 10
+    ? number.replace(/^(\d{3})(\d{3})(\d{4})$/, '($1) $2-$3')
+    : number
+}
 
-  const [formValidation, setFormValidation] = useState(
-    formValidationInitialState,
-  )
-
-  const formatPhoneNumber = (number: string) => {
-    return number.length === 10
-      ? number.replace(/^(\d{3})(\d{3})(\d{4})$/, '($1) $2-$3')
-      : number
-  }
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    const { name, value } = e.currentTarget
-    try {
-      const cleanedValue =
-        name === 'phoneNumber' ? value.replace(/\D/g, '') : value
-      const formattedValue =
-        name === 'phoneNumber' ? formatPhoneNumber(cleanedValue) : value
-      setForm((prev) => ({ ...prev, [name]: formattedValue }))
-      const fieldSchema =
-        FormSchema.shape[name as keyof typeof FormSchema.shape]
-      const parsed = fieldSchema.safeParse(cleanedValue)
-      if (!parsed.success) {
-        setFormValidation((prev) => ({
-          ...prev,
-          [name]: {
-            label: parsed.error.errors[0]?.message || 'Invalid input',
-            isError: true,
-          },
-        }))
-      } else {
-        setFormValidation((prev) => ({
-          ...prev,
-          [name]: { label: '', isError: false },
-        }))
-      }
-    } catch (error) {
+const handleChange = (
+  e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  setForm: React.Dispatch<React.SetStateAction<(typeof FormSchema)['_output']>>,
+  setFormValidation: React.Dispatch<
+    React.SetStateAction<typeof formValidationInitialState>
+  >,
+) => {
+  const { name, value } = e.currentTarget
+  try {
+    const cleanedValue =
+      name === 'phoneNumber' ? value.replace(/\D/g, '') : value
+    const formattedValue =
+      name === 'phoneNumber' ? formatPhoneNumber(cleanedValue) : value
+    setForm((prev) => ({ ...prev, [name]: formattedValue }))
+    const fieldSchema = FormSchema.shape[name as keyof typeof FormSchema.shape]
+    const parsed = fieldSchema.safeParse(cleanedValue)
+    if (!parsed.success) {
       setFormValidation((prev) => ({
         ...prev,
         [name]: {
-          label: 'An unexpected error occurred',
+          label: parsed.error.errors[0]?.message || 'Invalid input',
           isError: true,
         },
       }))
+    } else {
+      setFormValidation((prev) => ({
+        ...prev,
+        [name]: { label: '', isError: false },
+      }))
     }
+  } catch (error) {
+    setFormValidation((prev) => ({
+      ...prev,
+      [name]: {
+        label: 'An unexpected error occurred',
+        isError: true,
+      },
+    }))
   }
+}
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+type ContactForm = {
+  contact_first_name: string
+  contact_last_name: string
+  contact_email: string
+  contact_phone_number: string
+  contact_message: string
+  beetlepot: string
+}
+
+async function submitContactForm(form: ContactForm) {
+  const url = process.env.NEXT_PUBLIC_CONTACT_FORM_ENDPOINT
+  const key = process.env.NEXT_PUBLIC_CONTACT_FORM_API_KEY
+  const response = await fetch(`${url}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      ...(key && { 'x-api-key': key }),
+    },
+    body: JSON.stringify(form),
+  })
+
+  if (!response.ok) {
+    const errorResponse = await response.json()
+    throw new Error(errorResponse.message || 'Failed to submit email')
+  }
+  return await response.json()
+}
+
+const handleSubmit = async (
+  e: React.FormEvent<HTMLFormElement>,
+  setFormValidation: React.Dispatch<
+    React.SetStateAction<typeof formValidationInitialState>
+  >,
+  setIsReceived: React.Dispatch<
+    React.SetStateAction<{ message: string; isError: boolean }>
+  >,
+  formRef: React.RefObject<HTMLFormElement>,
+  form: (typeof FormSchema)['_output'],
+  setForm: React.Dispatch<React.SetStateAction<(typeof FormSchema)['_output']>>,
+) => {
+  e.preventDefault()
+  try {
     const parsedResult = FormSchema.safeParse(form)
     if (!parsedResult.success) {
-      parsedResult.error.issues.forEach((issue) => {
-        setFormValidation((prev) => ({
-          ...prev,
-          [issue.path[0]]: { label: issue.message, isError: true },
-        }))
-      })
       parsedResult.error.issues.forEach((issue) => {
         const { path, message } = issue
         const inputName = path[0]
@@ -133,9 +167,46 @@ export function Contact() {
       })
     } else {
       setFormValidation(formValidationInitialState)
-      // Send form data to server
     }
+    const { message } = await submitContactForm({
+      contact_first_name: form.firstName,
+      contact_last_name: form.lastName,
+      contact_email: form.email,
+      contact_phone_number: form.phoneNumber,
+      contact_message: form.message,
+      beetlepot: form.beetlepot,
+    })
+
+    if (message) {
+      setIsReceived({ message, isError: false })
+      formRef.current?.reset()
+      setForm(formInitialState)
+      setTimeout(() => {
+        setIsReceived({ message: '', isError: false })
+      }, 2000)
+    }
+  } catch (error) {
+    const errorMessage =
+      error instanceof Error ? error.message : 'Unexpected error occurred'
+    setIsReceived({ message: errorMessage, isError: true })
+    setTimeout(() => {
+      setIsReceived({ message: '', isError: false })
+    }, 2000)
   }
+}
+
+export function Contact() {
+  const { targetRef } = useScroll()
+  const formRef = useRef<HTMLFormElement>(null)
+  const [isReceived, setIsReceived] = useState({
+    message: '',
+    isError: false,
+  })
+  const [form, setForm] = useState(formInitialState)
+
+  const [formValidation, setFormValidation] = useState(
+    formValidationInitialState,
+  )
 
   return (
     <section>
@@ -152,7 +223,17 @@ export function Contact() {
             </div>
           </div>
           <form
-            onSubmit={handleSubmit}
+            onSubmit={(e) =>
+              handleSubmit(
+                e,
+                setFormValidation,
+                setIsReceived,
+                formRef,
+                form,
+                setForm,
+              )
+            }
+            ref={formRef}
             className="px-6 pb-24 pt-10 sm:pb-32 lg:px-8 lg:pt-20"
           >
             <div className="mx-auto max-w-xl lg:mr-0 lg:max-w-lg">
@@ -166,7 +247,9 @@ export function Contact() {
                   </label>
                   <div className="mt-2.5 text-right">
                     <input
-                      onChange={handleChange}
+                      onChange={(e) =>
+                        handleChange(e, setForm, setFormValidation)
+                      }
                       id="firstName"
                       name="firstName"
                       autoComplete="given-name"
@@ -188,7 +271,9 @@ export function Contact() {
                   </label>
                   <div className="mt-2.5 text-right">
                     <input
-                      onChange={handleChange}
+                      onChange={(e) =>
+                        handleChange(e, setForm, setFormValidation)
+                      }
                       id="lastName"
                       name="lastName"
                       autoComplete="family-name"
@@ -210,7 +295,9 @@ export function Contact() {
                   </label>
                   <div className="mt-2.5 text-right">
                     <input
-                      onChange={handleChange}
+                      onChange={(e) =>
+                        handleChange(e, setForm, setFormValidation)
+                      }
                       id="email"
                       name="email"
                       autoComplete="email"
@@ -232,12 +319,21 @@ export function Contact() {
                   </label>
                   <div className="mt-2.5 text-right">
                     <input
-                      onChange={handleChange}
+                      onChange={(e) =>
+                        handleChange(e, setForm, setFormValidation)
+                      }
                       value={form.phoneNumber}
                       id="phoneNumber"
                       name="phoneNumber"
                       autoComplete="tel"
                       className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-zinc-600 sm:text-sm/6"
+                    />
+                    <input
+                      type="text"
+                      name="beetlepot"
+                      style={{ display: 'none' }}
+                      tabIndex={-1}
+                      autoComplete="off"
                     />
                     <span className="block min-h-[1.25em] text-xs text-red-600">
                       {formValidation?.phoneNumber.isError
@@ -255,7 +351,9 @@ export function Contact() {
                   </label>
                   <div className="mt-2.5 text-right">
                     <textarea
-                      onChange={handleChange}
+                      onChange={(e) =>
+                        handleChange(e, setForm, setFormValidation)
+                      }
                       id="message"
                       name="message"
                       rows={4}
@@ -274,6 +372,20 @@ export function Contact() {
                 <Button className="border-2" outline type="submit" ring={false}>
                   Send message
                 </Button>
+              </div>
+              <div className="flex h-fit justify-end">
+                {isReceived.message && (
+                  <Alert
+                    success={!isReceived.isError}
+                    message={isReceived.message}
+                    className={clsx(
+                      'rounded-sm px-6 py-3 shadow-md',
+                      isReceived.isError
+                        ? 'shadow-red-300'
+                        : 'shadow-emerald-300',
+                    )}
+                  />
+                )}
               </div>
             </div>
           </form>

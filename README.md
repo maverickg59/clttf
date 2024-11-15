@@ -11,5 +11,6 @@ Postgres
 SendGrid
 
 TODO:
-submit functionality
-mobile optimization
+honeypot for bots
+finalize testing
+deploy to prod

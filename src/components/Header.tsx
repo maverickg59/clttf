@@ -19,17 +19,9 @@ export function Header() {
             <Image
               src="/images/clttf_logo_black.png"
               alt="logo"
-              className="hidden w-20 border-0 sm:block"
-              width={140}
-              height={140}
-              unoptimized
-            />
-            <Image
-              src="/images/clttf_logo_white.png"
-              alt="logo"
-              className="block w-20 border-0 sm:hidden"
-              width={140}
-              height={140}
+              className="w-40 border-0 sm:block"
+              width={400}
+              height={400}
               unoptimized
             />
           </Link>

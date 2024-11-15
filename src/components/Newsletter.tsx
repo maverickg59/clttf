@@ -1,15 +1,15 @@
 'use client'
+import { Dispatch, SetStateAction, FormEvent, RefObject } from 'react'
 import Image from 'next/image'
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
-import { ArrowRightIcon } from '@/components/Icons'
+import { ArrowRightIcon, FacebookIcon } from '@/components/Icons'
 import { Alert } from '@/components/Alert'
 import Link from 'next/link'
-import { FacebookIcon } from '@/components/Icons'
 import { useState, useRef } from 'react'
 import { z } from 'zod'
 
-async function submitEmail(email: string) {
+async function submitEmail(email: string, beetlepot: string) {
   const url = process.env.NEXT_PUBLIC_NEWSLETTER_ENDPOINT
   const key = process.env.NEXT_PUBLIC_NEWSLETTER_API_KEY
   const response = await fetch(`${url}`, {
@@ -18,64 +18,69 @@ async function submitEmail(email: string) {
       'Content-Type': 'application/json',
       ...(key && { 'x-api-key': key }),
     },
-    body: JSON.stringify({ subscriber_email: email }),
+    body: JSON.stringify({ subscriber_email: email, beetlepot }),
   })
 
   if (!response.ok) {
-    throw new Error()
+    const errorResponse = await response.json()
+    throw new Error(errorResponse.message || 'Failed to submit email')
   }
   return await response.json()
 }
 
+const EmailSchema = z
+  .string()
+  .regex(/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/, 'ex: john@doe.com')
+
+const handleChange = (
+  setEmailValidation: Dispatch<SetStateAction<string>>,
+  setIsReceived: Dispatch<SetStateAction<string>>,
+) => {
+  setEmailValidation('')
+  setIsReceived('')
+}
+
+const handleSubmit = async (
+  e: FormEvent<HTMLFormElement>,
+  setEmailValidation: Dispatch<SetStateAction<string>>,
+  setIsReceived: Dispatch<SetStateAction<string>>,
+  formRef: RefObject<HTMLFormElement>,
+) => {
+  e.preventDefault()
+  const email = new FormData(e.currentTarget).get('email')
+  const beetlepot = new FormData(e.currentTarget).get('beetlepot')
+  try {
+    const parsedEmail = EmailSchema.safeParse(email)
+    if (!parsedEmail.success) {
+      setEmailValidation(parsedEmail.error.errors[0].message)
+      return
+    } else {
+      setEmailValidation('')
+    }
+    const { message } = await submitEmail(email as string, beetlepot as string)
+
+    if (message) {
+      setIsReceived(message)
+      formRef.current?.reset()
+      setTimeout(() => {
+        setIsReceived('')
+      }, 2000)
+    }
+  } catch (error) {
+    const errorMessage =
+      error instanceof Error ? error.message : 'Unexpected error occurred'
+    setEmailValidation(errorMessage)
+    setTimeout(() => {
+      setEmailValidation('')
+    }, 2000)
+  }
+}
+
 export function Newsletter() {
   const [emailValidation, setEmailValidation] = useState('')
+  const [beetlepot, setBeetlepot] = useState('')
   const [isReceived, setIsReceived] = useState('')
-  const EmailSchema = z
-    .string()
-    .regex(
-      /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
-      'ex: john@doe.com',
-    )
   const formRef = useRef<HTMLFormElement>(null)
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    const email = new FormData(e.currentTarget).get('email')
-    try {
-      const parsedEmail = EmailSchema.safeParse(email)
-      if (!parsedEmail.success) {
-        setEmailValidation(parsedEmail.error.errors[0].message)
-        return
-      } else {
-        setEmailValidation('')
-      }
-      const submitted = await submitEmail(email as string)
-      if (submitted) {
-        setIsReceived(submitted.message)
-        formRef.current?.reset()
-        setTimeout(() => {
-          setIsReceived('')
-        }, 2000)
-      }
-    } catch (error) {
-      if (error instanceof Error) {
-        setEmailValidation(error.message)
-        setTimeout(() => {
-          setEmailValidation('')
-        }, 2000)
-      } else {
-        setEmailValidation('Unexpected error occurred')
-        setTimeout(() => {
-          setEmailValidation('')
-        }, 2000)
-      }
-    }
-  }
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmailValidation('')
-    setIsReceived('')
-  }
 
   return (
     <section id="newsletter" aria-label="Newsletter">
@@ -108,19 +113,35 @@ export function Newsletter() {
                 <FacebookIcon className="ml-2 h-7 w-7" />
               </div>
             </div>
-            <form onSubmit={handleSubmit} ref={formRef}>
+            <form
+              onSubmit={(e) =>
+                handleSubmit(e, setEmailValidation, setIsReceived, formRef)
+              }
+              ref={formRef}
+            >
               <h3 className="text-lg font-semibold tracking-tight text-zinc-900">
                 Sign up to our newsletter <span aria-hidden="true">&darr;</span>
               </h3>
               <div className="mt-5 flex rounded-3xl border-none bg-white py-2.5 pr-2.5 shadow-xl shadow-zinc-900/5 focus-within:ring-2 focus-within:ring-zinc-900">
                 <input
                   style={{ boxShadow: 'none' }}
-                  onChange={handleChange}
+                  onChange={() =>
+                    handleChange(setEmailValidation, setIsReceived)
+                  }
                   placeholder="Email address"
                   aria-label="Email address"
                   id="email"
                   name="email"
                   className="-my-2.5 flex-auto border-none bg-transparent pl-6 pr-2.5 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none"
+                />
+                <input
+                  type="text"
+                  name="beetlepot"
+                  style={{ display: 'none' }}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={beetlepot}
+                  onChange={(e) => setBeetlepot(e.target.value)}
                 />
                 <Button rounded outline type="submit">
                   <span className="sr-only sm:not-sr-only">Submit</span>
