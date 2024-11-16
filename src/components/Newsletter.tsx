@@ -111,8 +111,6 @@ export function Newsletter() {
                 <Link
                   href="https://m.facebook.com/102960111692089"
                   className="text-md focus:outline-zinc-900 md:mt-0"
-                  target="_blank"
-                  rel="noopener noreferrer"
                 >
                   Follow us on Facebook too!
                 </Link>

@@ -22,8 +22,6 @@ export function Footer() {
           <Link
             href="https://m.facebook.com/102960111692089"
             className="text-sm focus:outline-zinc-500 md:mt-0"
-            target="_blank"
-            rel="noopener noreferrer"
           >
             Follow us on Facebook
           </Link>
