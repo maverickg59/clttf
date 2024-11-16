@@ -19,7 +19,7 @@ export function Footer() {
       <Container className="flex flex-col justify-center gap-2 lg:items-end lg:text-right">
         <p className="flex items-center justify-center fill-zinc-500 text-zinc-500 hover:fill-zinc-900 hover:text-zinc-900">
           <Link
-            href="https://www.facebook.com/Coach-Lawson-Training-and-Track-Foundation-102960111692089/"
+            href="https://facebook.com/Coach-Lawson-Training-and-Track-Foundation-102960111692089/"
             className="text-sm focus:outline-zinc-500 md:mt-0"
             target="_blank"
             rel="noopener noreferrer"
