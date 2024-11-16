@@ -14,7 +14,6 @@ import { ArrowRightIcon, FacebookIcon } from '@/components/Icons'
 import { Alert } from '@/components/Alert'
 import Link from 'next/link'
 import { z } from 'zod'
-import useFacebookLink from '@/hooks/useFacebookLink'
 
 async function submitEmail(email: string, beetlepot: string) {
   const url = process.env.NEXT_PUBLIC_NEWSLETTER_ENDPOINT
@@ -88,7 +87,6 @@ export function Newsletter() {
   const [beetlepot, setBeetlepot] = useState('')
   const [isReceived, setIsReceived] = useState('')
   const formRef = useRef<HTMLFormElement>(null)
-  const fbLink = useFacebookLink()
 
   return (
     <section id="newsletter" aria-label="Newsletter">
@@ -111,8 +109,7 @@ export function Newsletter() {
               </p>
               <div className="mt-3 flex items-center fill-zinc-900 align-middle text-lg text-zinc-900 hover:fill-zinc-500 hover:text-zinc-600">
                 <Link
-                  // href="https://facebook.com/Coach-Lawson-Training-and-Track-Foundation-102960111692089/"
-                  href={fbLink}
+                  href="https://facebook.com/102960111692089"
                   className="text-md focus:outline-zinc-900 md:mt-0"
                   target="_blank"
                   rel="noopener noreferrer"

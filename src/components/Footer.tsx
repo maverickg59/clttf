@@ -3,10 +3,8 @@ import { Container } from '@/components/Container'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FacebookIcon } from '@/components/Icons'
-import useFacebookLink from '@/hooks/useFacebookLink'
 
 export function Footer() {
-  const fbLink = useFacebookLink()
   return (
     <footer className="flex flex-col py-16 text-center lg:flex-row">
       <Container>
@@ -22,7 +20,7 @@ export function Footer() {
       <Container className="flex flex-col justify-center gap-2 lg:items-end lg:text-right">
         <p className="flex items-center justify-center fill-zinc-500 text-zinc-500 hover:fill-zinc-900 hover:text-zinc-900">
           <Link
-            href={fbLink}
+            href="https://facebook.com/102960111692089"
             className="text-sm focus:outline-zinc-500 md:mt-0"
             target="_blank"
             rel="noopener noreferrer"
