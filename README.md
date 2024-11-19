@@ -2,15 +2,11 @@ Coach Lawson Training and Track Foundation is a small 501(c)(3) not for profit o
 
 I've built and maintain this site (including all operating costs) totally free of charge. The previous build (in 2020) used CRA and React Bootstrap, but the deprecation of CRA caused me to upgrade. The site is now built using the following tech stack:
 
-Typescript
-Next.js
-React.js
-Tailwind CSS
-Zod
-Postgres
-SendGrid
-
-TODO:
-honeypot for bots
-finalize testing
-deploy to prod
+- Typescript
+- Next.js
+- React.js
+- Tailwind CSS
+- Zod
+- Postgres
+- SendGrid
+- Cloudflare Workers
