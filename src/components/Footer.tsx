@@ -36,15 +36,14 @@ export function Footer() {
           profit organization.
         </p>
         <p className="text-sm text-slate-500 md:mt-0">
-          The development and maintenance of this site is provided free of
-          charge by{' '}
+          The development and maintenance of this site is provided by{' '}
           <Link
-            href="https://chriswhite.rocks"
+            href="https://five9cyber.com"
             target="_blank"
             rel="noopener noreferrer"
             className="underline underline-offset-4 hover:text-zinc-900 focus:outline-zinc-500"
           >
-            chriswhite.rocks
+            Five9 Cyber
           </Link>
         </p>
       </Container>
