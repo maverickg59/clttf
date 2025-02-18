@@ -10,7 +10,7 @@ export function Footer() {
       <Container>
         <Image
           src="/images/clttf_logo_black.png"
-          alt="logo"
+          alt="Coach Lawson Training and Track Foundation logo"
           width={120}
           height={120}
           className="w-40"
@@ -22,6 +22,7 @@ export function Footer() {
           <Link
             href="https://m.facebook.com/102960111692089"
             className="text-sm focus:outline-zinc-500 md:mt-0"
+            aria-hidden={true}
           >
             Follow us on Facebook
           </Link>

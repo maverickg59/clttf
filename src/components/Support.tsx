@@ -34,7 +34,7 @@ export function Support() {
       className="py-20 sm:my-32"
     >
       <div className="relative mt-14 sm:mt-24">
-        <BackgroundImage className="-bottom-40 -top-40 hidden scale-x-[-1] opacity-90 sm:block">
+        <BackgroundImage className="-bottom-40 -top-40 hidden scale-x-[-1] brightness-75 sm:block">
           <Image
             className="left-0 top-0 h-full w-full object-contain sm:object-cover"
             src="/images/clttf_tf_3.jpg"

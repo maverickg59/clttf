@@ -101,9 +101,9 @@ export function Newsletter() {
           />
           <div className="relative mx-auto grid max-w-2xl grid-cols-1 gap-x-32 gap-y-14 xl:max-w-none xl:grid-cols-2">
             <div>
-              <p className="font-display text-4xl font-medium tracking-tighter text-zinc-900 sm:text-5xl">
+              <h2 className="font-display text-4xl font-medium tracking-tighter text-zinc-900 sm:text-5xl">
                 Stay up to date
-              </p>
+              </h2>
               <p className="mt-4 text-lg tracking-tight text-zinc-900">
                 Get updates on events, training, and more.
               </p>
@@ -143,6 +143,7 @@ export function Newsletter() {
                   name="beetlepot"
                   style={{ display: 'none' }}
                   tabIndex={-1}
+                  aria-hidden="true"
                   autoComplete="off"
                   value={beetlepot}
                   onChange={(e) => setBeetlepot(e.target.value)}

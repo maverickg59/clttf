@@ -11,7 +11,7 @@ export function Hero() {
     <section className="relative pb-20 pt-10 sm:pt-32">
       <BackgroundImage className="-bottom-14 -top-36">
         <Image
-          className="top-0 h-full w-full object-cover"
+          className="top-0 h-full w-full object-cover brightness-90"
           src="/images/clttf_tf_1.jpg"
           alt="Coach Lawson riding his Yamaha R1 at Tortilla Flats."
           priority

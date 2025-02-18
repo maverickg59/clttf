@@ -18,7 +18,7 @@ export function Header() {
           >
             <Image
               src="/images/clttf_logo_black.png"
-              alt="logo"
+              alt="Coach Lawson Training and Track Foundation logo"
               className="w-40 border-0 sm:block"
               width={400}
               height={400}

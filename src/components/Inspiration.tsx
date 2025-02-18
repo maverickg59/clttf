@@ -19,11 +19,16 @@ export function Inspiration() {
             height={200}
           />
           <div className="mx-auto flex w-5/6 flex-col justify-center text-center sm:w-1/2 sm:text-left">
-            <h3 className="mt-6 text-lg/8 font-semibold text-gray-900">
+            <h2 className="mt-6 text-lg/8 font-semibold text-gray-900">
               Mike &quot;Coach&quot; Lawson
-            </h3>
-            <p className="text-base/7 text-gray-600">8/26/1983 - 9/22/2020</p>
-            <p className="mt-4 text-base/7 text-gray-600">
+            </h2>
+            <span className="text-base/7 text-gray-600">
+              8/26/1983 - 9/22/2020
+            </span>
+            <p
+              id="inspiration-title"
+              className="mt-4 text-base/7 text-gray-600"
+            >
               “Coach” Mike Lawson’s love for motorcycles began at just four
               years old, riding a Yamaha Tri-Zinger. At six, he lost his father
               in a motorcycle accident, a tragedy that shaped his journey.

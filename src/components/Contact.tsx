@@ -331,6 +331,7 @@ export function Contact() {
                     <input
                       type="text"
                       name="beetlepot"
+                      aria-hidden="true"
                       style={{ display: 'none' }}
                       tabIndex={-1}
                       autoComplete="off"
