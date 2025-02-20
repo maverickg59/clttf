@@ -42,13 +42,13 @@ export default function RootLayout({
         dmSans.variable,
       )}
     >
-      <Script
-        strategy="lazyOnload"
-        src="https://cloud.umami.is/script.js"
-        data-website-id="421dc097-7f49-4033-8d4a-b8fec9b09481"
-      />
       <ScrollProvider>
         <body className="flex h-screen min-h-full">
+          <Script
+            strategy="lazyOnload"
+            src="https://cloud.umami.is/script.js"
+            data-website-id="421dc097-7f49-4033-8d4a-b8fec9b09481"
+          />
           <div className="flex w-full flex-col bg-cover bg-center bg-no-repeat">
             {children}
           </div>
