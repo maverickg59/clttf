@@ -43,7 +43,7 @@ export default function RootLayout({
       )}
     >
       <Script
-        defer
+        strategy="lazyOnload"
         src="https://cloud.umami.is/script.js"
         data-website-id="421dc097-7f49-4033-8d4a-b8fec9b09481"
       />
