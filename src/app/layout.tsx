@@ -1,7 +1,8 @@
-import { type Metadata } from 'next'
-import { DM_Sans, Inter } from 'next/font/google'
-import clsx from 'clsx'
 import { ScrollProvider } from '@/context/ScrollContext'
+import { DM_Sans, Inter } from 'next/font/google'
+import { type Metadata } from 'next'
+import Script from 'next/script'
+import clsx from 'clsx'
 
 import '@/styles/tailwind.css'
 
@@ -41,6 +42,11 @@ export default function RootLayout({
         dmSans.variable,
       )}
     >
+      <Script
+        defer
+        src="https://cloud.umami.is/script.js"
+        data-website-id="421dc097-7f49-4033-8d4a-b8fec9b09481"
+      />
       <ScrollProvider>
         <body className="flex h-screen min-h-full">
           <div className="flex w-full flex-col bg-cover bg-center bg-no-repeat">
