@@ -12,7 +12,7 @@ export function Hero() {
       <BackgroundImage className="-bottom-14 -top-36">
         <Image
           className="top-0 h-full w-full object-cover brightness-90"
-          src="/images/clttf_tf_1.jpg"
+          src="/images/clttf_tf_1.webp"
           alt="Coach Lawson riding his Yamaha R1 at Tortilla Flats."
           priority
           unoptimized

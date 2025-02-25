@@ -34,10 +34,10 @@ export function Support() {
       className="py-20 sm:my-32"
     >
       <div className="relative mt-14 sm:mt-24">
-        <BackgroundImage className="-bottom-40 -top-40 hidden scale-x-[-1] brightness-75 sm:block">
+        <BackgroundImage className="-bottom-40 -top-40 scale-x-[-1] brightness-75 sm:block">
           <Image
-            className="left-0 top-0 h-full w-full object-contain sm:object-cover"
-            src="/images/clttf_tf_3.jpg"
+            className="left-0 top-0 h-full w-full object-cover sm:object-cover"
+            src="/images/clttf_tf_3.webp"
             alt="Coach Lawson riding his R3 at the Phoenix Kart Racing Association track."
             priority
             unoptimized
@@ -47,7 +47,7 @@ export function Support() {
         <Container className="relative">
           <div className="mx-auto max-w-7xl bg-slate-900 bg-opacity-65 px-6 md:rounded-4xl lg:px-8">
             <div className="mx-auto max-w-7xl px-6 py-24 sm:pt-32 lg:px-8 lg:py-40">
-              <div className="lg:grid lg:grid-cols-12 lg:gap-8">
+              <div className="text-center lg:grid lg:grid-cols-12 lg:gap-8 lg:text-left">
                 <div className="lg:col-span-5">
                   <h2
                     id="support-title"
@@ -55,7 +55,7 @@ export function Support() {
                   >
                     Supporting Our Mission
                   </h2>
-                  <p className="mt-4 w-4/5 font-display text-lg tracking-tight text-white">
+                  <p className="mt-4 font-display text-lg tracking-tight text-white lg:w-4/5">
                     Our mission is to reduce motorcycle accidents and minimize
                     their impact by empowering riders with access to top-tier
                     training and safety gear. Through generous donations of

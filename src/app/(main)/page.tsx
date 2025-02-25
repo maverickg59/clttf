@@ -1,9 +1,12 @@
-import { Hero } from '@/components/Hero'
-import { Newsletter } from '@/components/Newsletter'
-import { Support } from '@/components/Support'
-import { Inspiration } from '@/components/Inspiration'
-import { Team } from '@/components/Team'
-import { Contact } from '@/components/Contact'
+import {
+  Hero,
+  Newsletter,
+  Support,
+  Inspiration,
+  Team,
+  Contact,
+  SupporterSection,
+} from '@/components'
 
 export default function Home() {
   return (
@@ -11,6 +14,7 @@ export default function Home() {
       <Hero />
       <Inspiration />
       <Support />
+      <SupporterSection />
       <Team />
       <Contact />
       <Newsletter />

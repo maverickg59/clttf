@@ -94,7 +94,7 @@ export function Newsletter() {
         <div className="relative -mx-4 overflow-hidden bg-indigo-50 px-4 py-20 sm:-mx-6 sm:px-6 md:mx-0 md:rounded-4xl md:px-16 xl:px-24 xl:py-36">
           <Image
             className="absolute left-0 top-0 object-cover opacity-30 sm:h-full sm:w-full sm:object-none"
-            src="/images/clttf_track_2.jpg"
+            src="/images/clttf_track_2.webp"
             alt="Coach Lawson riding his Yamaha R3 at Tortilla Flats."
             unoptimized
             fill

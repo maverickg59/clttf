@@ -12,7 +12,7 @@ export function Inspiration() {
         <div className="flex flex-col justify-center gap-8 sm:flex-row lg:gap-12">
           <Image
             alt="Coach Mike Lawson hanging out during a motorcycle ride."
-            src="/images/clttf_mike_lawson.jpg"
+            src="/images/clttf_mike_lawson.webp"
             className="rounded-5xl object-cover"
             unoptimized
             width={375}
