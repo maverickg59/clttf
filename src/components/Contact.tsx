@@ -123,13 +123,11 @@ type ContactForm = {
 }
 
 async function submitContactForm(form: ContactForm) {
-  const url = process.env.NEXT_PUBLIC_CONTACT_FORM_ENDPOINT
-  const key = process.env.NEXT_PUBLIC_CONTACT_FORM_API_KEY
-  const response = await fetch(`${url}`, {
+  const url = process.env.NEXT_PUBLIC_API_ENDPOINT
+  const response = await fetch(`${url}/contact/clttf/submit`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      ...(key && { 'x-api-key': key }),
     },
     body: JSON.stringify(form),
   })
@@ -168,11 +166,12 @@ const handleSubmit = async (
     } else {
       setFormValidation(formValidationInitialState)
     }
+    const strippedPhoneNumber = form.phoneNumber.replace(/\D/g, '');
     const { message } = await submitContactForm({
       contact_first_name: form.firstName,
       contact_last_name: form.lastName,
       contact_email: form.email,
-      contact_phone_number: form.phoneNumber,
+      contact_phone_number: strippedPhoneNumber,
       contact_message: form.message,
       beetlepot: form.beetlepot,
     })

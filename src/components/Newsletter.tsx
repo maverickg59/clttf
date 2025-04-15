@@ -16,13 +16,11 @@ import Link from 'next/link'
 import { z } from 'zod'
 
 async function submitEmail(email: string, beetlepot: string) {
-  const url = process.env.NEXT_PUBLIC_NEWSLETTER_ENDPOINT
-  const key = process.env.NEXT_PUBLIC_NEWSLETTER_API_KEY
-  const response = await fetch(`${url}`, {
+  const url = process.env.NEXT_PUBLIC_API_ENDPOINT
+  const response = await fetch(`${url}/newsletter/clttf/subscribe`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      ...(key && { 'x-api-key': key }),
     },
     body: JSON.stringify({ subscriber_email: email, beetlepot }),
   })
