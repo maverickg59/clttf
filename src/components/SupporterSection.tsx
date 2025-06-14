@@ -1,7 +1,13 @@
+/* eslint-disable @next/next/no-img-element */
 import { Container } from '@/components/Container'
-import Image from 'next/image'
+import clsx from 'clsx'
 
 const supporters = [
+  {
+    business_name: 'Fossil Creek Insurance',
+    business_logo: '/images/fossil_creek.webp',
+    website_link: 'https://www.fossilins.com/',
+  },
   {
     business_name: 'The Husband & Wife Law Team',
     business_logo: '/images/hb_wf_lw_tm.webp',
@@ -30,21 +36,18 @@ export function SupporterSection() {
           efforts. Their support allows us to reach further and do more, and we
           are honored to acknowledge their generosity here.
         </p>
-        <div className="mt-10 flex w-full max-w-5xl flex-wrap justify-start gap-8">
+        <div className="mt-10 flex w-full max-w-5xl flex-wrap gap-4">
           {supporters.map((supporter) => (
             <a
               key={supporter.business_name}
               href={supporter.website_link}
               target="_blank"
               rel="noopener noreferrer"
+              className="w-full object-contain"
             >
-              <Image
+              <img
                 src={supporter.business_logo}
                 alt={supporter.business_name}
-                className="object-contain"
-                unoptimized
-                height={70}
-                width={350}
               />
             </a>
           ))}
