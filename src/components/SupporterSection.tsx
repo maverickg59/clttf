@@ -8,12 +8,6 @@ const supporters = [
     business_logo: '/images/fossil_creek.webp',
     website_link: 'https://www.fossilins.com/',
   },
-  {
-    business_name: 'The Husband & Wife Law Team',
-    business_logo: '/images/hb_wf_lw_tm.webp',
-    website_link:
-      'https://husbandandwifelawteam.com/practice-areas/motorcycle-accidents',
-  },
 ]
 
 export function SupporterSection() {
